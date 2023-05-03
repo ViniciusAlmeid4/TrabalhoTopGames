@@ -62,5 +62,34 @@ namespace TrabalhoTopGames
 
         }
 
+        public void inserir_jogo(string nome_jogo, string genero, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            string sql = "Insert Into cliente Values ('" + nome_jogo + "','" + genero + "','" + plataforma + "'," + preco_venda + ", " + preco_locacao + " , " + estoque_jogo + ")";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+        }
+
+        public bool registro_existe_jogo(string nome_jogo, string plataforma)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            string sql = "Select * From jogos where cpf = '" + nome_jogo + "' and plataforma = '"+ plataforma + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            var result = cmd.ExecuteScalar();
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

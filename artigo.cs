@@ -57,5 +57,33 @@ namespace TrabalhoTopGames
 
         }
 
+        public void inserir_artigo(string nome_artigo, string marca, decimal preco_artigo, int estoque_artigo)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            string sql = "Insert Into artigos Values ('" + nome_artigo + "','" + marca + "'," + preco_artigo + "," + estoque_artigo + ")";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+        }
+
+        public bool registro_existe_art(string nome_artigo, string marca)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            string sql = "Select * From artigos where nome_artigo = '" + nome_artigo + "' and marca = '" + marca + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql ,con);
+            cmd.ExecuteNonQuery();
+            var result = cmd.ExecuteScalar();
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

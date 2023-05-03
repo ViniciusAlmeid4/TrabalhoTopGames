@@ -57,6 +57,34 @@ namespace TrabalhoTopGames
 
         }
 
+        public void inserir_cliente(string nome_cliente, string cep, string cpf, string email, string celular)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            string sql = "Insert Into cliente Values ('" + nome_cliente + "','" + cep + "','" + cpf + "','" + email + "', '"+ celular + "')";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+        }
+
+        public bool registro_existe_cli(string cpf)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            string sql = "Select * From cliente where cpf = '" + cpf + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            var result = cmd.ExecuteScalar();
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
 
