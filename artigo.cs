@@ -85,5 +85,31 @@ namespace TrabalhoTopGames
             }
             return false;
         }
+
+        public void atualiza_artigo(int Idartigo, string nome_artigo, string marca, decimal preco_artigo, int estoque_artigo)
+        {
+            preco_artigo = Math.Round(preco_artigo, 2);
+            string sql = "Update artigos Set nome_artigo = '" + nome_artigo + "', marca = '" + marca + "', preco_artigo = '" + preco_artigo + "', estoque_artigo = '" + estoque_artigo + "' where Idartigo = '" + Idartigo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public void localiza_artigo(int Idartigo)
+        {
+            string sql = "Select * From artigos where Idartigo = '" + Idartigo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                nome_artigo = reader["nome_artigo"].ToString();
+                marca = reader["marca"].ToString();
+                preco_artigo = Math.Round((decimal)reader["preco_artigo"], 2);
+                estoque_artigo = (int)reader["estoque_artigo"];
+            }
+            con.Close();
+        }
     }
 }

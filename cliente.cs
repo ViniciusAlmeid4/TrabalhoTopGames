@@ -85,6 +85,32 @@ namespace TrabalhoTopGames
             }
             return false;
         }
+
+        public void atualiza_cliente(int Idcliente, string nome_cliente, string cep, string cpf, string email, string celular)
+        {
+            string sql = "Update cliente Set nome_cliente = '" + nome_cliente + "', cep = '" + cep + "', cpf = '" + cpf + "', email = '" + email + "', celular = '" + celular + "' where Idcliente = '"+Idcliente+"'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public void localiza_cliente(int Idcliente)
+        {
+            string sql = "Select * From cliente where Idcliente = '"+Idcliente+"'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                nome_cliente = reader["nome_cliente"].ToString();
+                cep = reader["cep"].ToString();
+                cpf = reader["cpf"].ToString();
+                email = reader["email"].ToString();
+                celular = reader["celular"].ToString();
+            }
+            con.Close();
+        }
     }
 }
 

@@ -91,5 +91,31 @@ namespace TrabalhoTopGames
             return false;
         }
 
+        public void atualiza_jogo(int Idjogo, string nome_jogo, string genero, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
+        {
+            string sql = "Update jogos Set nome_jogo = '" + nome_jogo + "', genero = '" + genero + "', plataforma = '" + plataforma + "', preco_venda = '" + preco_venda + "', preco_locacao = '" + preco_locacao + "', estoque_jogo = '" + estoque_jogo + "' where Idjogo = '" + Idjogo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public void localiza_jogo(int Idjogo)
+        {
+            string sql = "Select * From jogo where Idjogo = '" + Idjogo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                nome_jogo = reader["nome_jogo"].ToString();
+                genero = reader["genero"].ToString();
+                plataforma = reader["plataforma"].ToString();
+                preco_venda = Math.Round((decimal)reader["preco_venda"], 2);
+                preco_locacao = Math.Round((decimal)reader["preco_locacao"], 2);
+                estoque_jogo = (int)reader["estoque_jogo"];
+            }
+            con.Close();
+        }
     }
 }
