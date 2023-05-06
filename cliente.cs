@@ -111,6 +111,15 @@ namespace TrabalhoTopGames
             }
             con.Close();
         }
+
+        public void exclui_cliente(int Idcliente)
+        {
+            string sql = "Delete From cliente where Idcliente = '" + Idcliente + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }
 

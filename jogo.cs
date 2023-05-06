@@ -117,5 +117,14 @@ namespace TrabalhoTopGames
             }
             con.Close();
         }
+
+        public void exclui_jogo(int Idjogo)
+        {
+            string sql = "Delete From jogos where Idjogo = '" + Idjogo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }

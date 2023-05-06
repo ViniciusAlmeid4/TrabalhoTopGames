@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
+using System.Windows.Forms;
 
 namespace TrabalhoTopGames
 {
@@ -63,6 +64,7 @@ namespace TrabalhoTopGames
             {
                 con.Close();
             }
+            con.Open();
             string sql = "Insert Into artigos Values ('" + nome_artigo + "','" + marca + "'," + preco_artigo + "," + estoque_artigo + ")";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -89,7 +91,7 @@ namespace TrabalhoTopGames
         public void atualiza_artigo(int Idartigo, string nome_artigo, string marca, decimal preco_artigo, int estoque_artigo)
         {
             preco_artigo = Math.Round(preco_artigo, 2);
-            string sql = "Update artigos Set nome_artigo = '" + nome_artigo + "', marca = '" + marca + "', preco_artigo = '" + preco_artigo + "', estoque_artigo = '" + estoque_artigo + "' where Idartigo = '" + Idartigo + "'";
+            string sql = "Update artigos Set nome_artigo = '" + nome_artigo + "', marca = '" + marca + "', preco_artigo = " + preco_artigo + ", estoque_artigo = '" + estoque_artigo + "' Where Idartigo = '" + Idartigo + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -109,6 +111,15 @@ namespace TrabalhoTopGames
                 preco_artigo = Math.Round((decimal)reader["preco_artigo"], 2);
                 estoque_artigo = (int)reader["estoque_artigo"];
             }
+            con.Close();
+        }
+
+        public void exclui_artigo(int Idartigo)
+        {
+            string sql = "Delete From artigos where Idartigo = '" + Idartigo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
             con.Close();
         }
     }
