@@ -12,15 +12,16 @@ namespace TrabalhoTopGames
     class Jogos
     {
 
-        public int Idjogo { get; set; }
-        public string nome_jogo { get; set; }
-        public string genero { get; set; }
+        public int Idproduto { get; set; }
+        public string nome_produto { get; set; }
+        public string tipo_produto { get; set; }
+        public string status { get; set; }
         public string plataforma { get; set; }
         public decimal preco_venda { get; set; }
         public decimal preco_locacao { get; set; }
-        public int estoque_jogo { get; set; }
+        public int estoque_produto { get; set; }
 
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DbTopG.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Aluno\\source\\repos\\ViniciusAlmeid4\\TrabalhoTopGames\\DBT.mdf;Integrated Security=True");
 
         public List<Jogos> lista_jogo()
         {
