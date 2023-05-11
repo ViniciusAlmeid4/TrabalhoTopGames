@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="artigo.cs" />
     <Compile Include="cliente.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
