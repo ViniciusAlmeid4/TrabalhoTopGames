@@ -24,31 +24,31 @@ namespace TrabalhoTopGames
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Artigo j = new Artigo();
-            List<Artigo> li = j.lista_artigo();
+            Produtos j = new Produtos();
+            List<Produtos> li = j.lista_produto();
             dgv1.DataSource = li;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Artigo art = new Artigo();
-            if(art.registro_existe_art(textBox1.Text, textBox2.Text) == true)
+            Produtos art = new Produtos();
+            if(art.registro_existe_produto(textBox1.Text, textBox2.Text) == true)
             {
-                MessageBox.Show("Artigo já existe");
+                MessageBox.Show("Produto já existe");
             }
             else
             {
                 int estoque;
                 decimal preco;
-                preco = Convert.ToDecimal(textBox3.Text.Trim());
-                estoque = Convert.ToInt32(textBox4.Text.Trim());
-                art.inserir_artigo(textBox1.Text, textBox2.Text, preco, estoque);
+                preco = Convert.ToDecimal(##.Trim());
+                estoque = Convert.ToInt32(##.Trim());
+                art.inserir_produto(textBox1.Text, textBox2.Text, preco, estoque);
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
                 textBox4.Text = "";
                 MessageBox.Show("Cadastrado com sucesso!");
-                List<Artigo> li = art.lista_artigo();
+                List<Produtos> li = art.lista_produto();
                 dgv1.DataSource = li;
             }
         }
@@ -60,12 +60,12 @@ namespace TrabalhoTopGames
                 MessageBox.Show("Selecione um id!");
             }
             else
-            {            
-                Artigo art = new Artigo();
-                int Id = Convert.ToInt32(textBox5.Text.Trim());
-                art.exclui_artigo(Id);
+            {
+                Produtos art = new Produtos();
+                int Id = Convert.ToInt32(##.Trim());
+                art.exclui_produto(Id);
                 MessageBox.Show("Deletado com sucesso!");
-                List<Artigo> li = art.lista_artigo();
+                List<Produtos> li = art.lista_produto();
                 dgv1.DataSource = li;
             }
         }
@@ -73,8 +73,8 @@ namespace TrabalhoTopGames
         private void button2_Click(object sender, EventArgs e)
         {
             int Id = Convert.ToInt32(textBox5.Text.Trim());
-            Artigo art = new Artigo();
-            art.localiza_artigo(Id);
+            Produtos art = new Produtos();
+            art.localiza_produto(Id);
             if(art.nome_artigo == null && art.marca == null)
             {
                 MessageBox.Show("Id invalido!");
@@ -100,16 +100,17 @@ namespace TrabalhoTopGames
 
                 // SA PORRA DE DECIMAL TÁ DANDO ERRADO
 
-                Artigo art = new Artigo();
+                Produtos prod = new Produtos();
                 int estoque, Id;
-                decimal preco;
-                Id = Convert.ToInt32(textBox5.Text.Trim());
-                preco = Convert.ToDecimal(textBox3.Text.Trim().Replace(",","."));
-                estoque = Convert.ToInt32(textBox4.Text.Trim());
+                decimal preco_venda, preco_locacao;
+                Id = Convert.ToInt32(##.Trim());
+                preco_venda = Convert.ToDecimal(##.Trim().Replace(",","."));
+                preco_locacao = Convert.ToDecimal(##.Trim().Replace(",", "."));
+                estoque = Convert.ToInt32(##.Text.Trim());
 
-                art.atualiza_artigo(Id, textBox1.Text, textBox2.Text, preco, estoque);
-                MessageBox.Show("Atualizado com sucesso!!", textBox3.Text);
-                List<Artigo> li = art.lista_artigo();
+                prod.atualiza_produto(Id, textBox1.Text, textBox2.Text, preco, estoque);
+                MessageBox.Show("Atualizado com sucesso!!");
+                List<Produtos> li = prod.lista_produto();
                 dgv1.DataSource = li;
             }
             else
@@ -118,5 +119,6 @@ namespace TrabalhoTopGames
             }
 
         }
+
     }
 }

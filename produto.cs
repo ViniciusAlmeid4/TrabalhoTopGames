@@ -21,7 +21,7 @@ namespace TrabalhoTopGames
         public decimal preco_locacao { get; set; }
         public int estoque_produto { get; set; }
 
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Aluno\\source\\repos\\ViniciusAlmeid4\\TrabalhoTopGames\\DBT.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection("C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DBTop.mdf");
 
         public List<Produtos> lista_produto()
         {
@@ -52,8 +52,8 @@ namespace TrabalhoTopGames
                 prod.preco_locacao = (decimal)dr["preco_locacao"];
                 prod.estoque_produto = (int)dr["estoque_produto"];
 
-                prod.preco_venda = Math.Round(jogo.preco_venda, 2);
-                prod.preco_locacao = Math.Round(jogo.preco_locacao, 2);
+                prod.preco_venda = Math.Round(prod.preco_venda, 2);
+                prod.preco_locacao = Math.Round(prod.preco_locacao, 2);
 
                 list_p.Add(prod);
 
@@ -64,24 +64,24 @@ namespace TrabalhoTopGames
 
         }
 
-        public void inserir_jogo(string nome_jogo, string genero, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
+        public void inserir_produto(string nome_produto, string tipo_produto, string status, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
         {
             if (con.State == ConnectionState.Open)
             {
                 con.Close();
             }
-            string sql = "Insert Into cliente Values ('" + nome_jogo + "','" + genero + "','" + plataforma + "'," + preco_venda + ", " + preco_locacao + " , " + estoque_jogo + ")";
+            string sql = "Insert Into produtos Values ('" + nome_produto + "','" + tipo_produto + "','" + status + "','"+plataforma+"'," + preco_venda + ", " + preco_locacao + " , " + estoque_jogo + ")";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
         }
 
-        public bool registro_existe_jogo(string nome_jogo, string plataforma)
+        public bool registro_existe_produto(string nome_produto, string tipo_produto)
         {
             if (con.State == ConnectionState.Open)
             {
                 con.Close();
             }
-            string sql = "Select * From jogos where cpf = '" + nome_jogo + "' and plataforma = '"+ plataforma + "'";
+            string sql = "Select * From produtos where nome_produto = '" + nome_produto + "' and tipo_produto = '" + tipo_produto + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -93,36 +93,37 @@ namespace TrabalhoTopGames
             return false;
         }
 
-        public void atualiza_jogo(int Idjogo, string nome_jogo, string genero, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
+        public void atualiza_produto(int Idproduto, string nome_produto, string tipo_produto, string status, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
         {
-            string sql = "Update jogos Set nome_jogo = '" + nome_jogo + "', genero = '" + genero + "', plataforma = '" + plataforma + "', preco_venda = '" + preco_venda + "', preco_locacao = '" + preco_locacao + "', estoque_jogo = '" + estoque_jogo + "' where Idjogo = '" + Idjogo + "'";
+            string sql = "Update produtos Set nome_produto = '" + nome_produto + "', tipo_produto = '" + tipo_produto + "', status = '"+ status + "', plataforma = '" + plataforma + "', preco_venda = '" + preco_venda + "', preco_locacao = '" + preco_locacao + "', estoque_jogo = '" + estoque_jogo + "' where Idproduto = '" + Idproduto + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
         }
 
-        public void localiza_jogo(int Idjogo)
+        public void localiza_produto(int Idproduto)
         {
-            string sql = "Select * From jogo where Idjogo = '" + Idjogo + "'";
+            string sql = "Select * From produtos where Idproduto = '" + Idproduto + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                nome_jogo = reader["nome_jogo"].ToString();
-                genero = reader["genero"].ToString();
+                nome_produto = reader["nome_produto"].ToString();
+                tipo_produto = reader["tipo_produto"].ToString();
+                status = reader["status"].ToString();
                 plataforma = reader["plataforma"].ToString();
                 preco_venda = Math.Round((decimal)reader["preco_venda"], 2);
                 preco_locacao = Math.Round((decimal)reader["preco_locacao"], 2);
-                estoque_jogo = (int)reader["estoque_jogo"];
+                estoque_produto = (int)reader["estoque_jogo"];
             }
             con.Close();
         }
 
-        public void exclui_jogo(int Idjogo)
+        public void exclui_produto(int Idproduto)
         {
-            string sql = "Delete From jogos where Idjogo = '" + Idjogo + "'";
+            string sql = "Delete From produtos where Idproduto = '" + Idproduto + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
