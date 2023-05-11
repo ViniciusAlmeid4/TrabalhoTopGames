@@ -104,11 +104,11 @@ namespace TrabalhoTopGames
                 int estoque, Id;
                 decimal preco;
                 Id = Convert.ToInt32(textBox5.Text.Trim());
-                preco = Decimal.Parse(textBox3.Text.Replace(",","."));
+                preco = Convert.ToDecimal(textBox3.Text.Trim().Replace(",","."));
                 estoque = Convert.ToInt32(textBox4.Text.Trim());
 
                 art.atualiza_artigo(Id, textBox1.Text, textBox2.Text, preco, estoque);
-                MessageBox.Show("Atualizado com sucesso!!",Convert.ToString(preco));
+                MessageBox.Show("Atualizado com sucesso!!", textBox3.Text);
                 List<Artigo> li = art.lista_artigo();
                 dgv1.DataSource = li;
             }

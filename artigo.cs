@@ -68,6 +68,7 @@ namespace TrabalhoTopGames
             string sql = "Insert Into artigos Values ('" + nome_artigo + "','" + marca + "'," + preco_artigo + "," + estoque_artigo + ")";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
+            con.Close();
         }
 
         public bool registro_existe_art(string nome_artigo, string marca)
@@ -90,7 +91,6 @@ namespace TrabalhoTopGames
 
         public void atualiza_artigo(int Idartigo, string nome_artigo, string marca, decimal preco_artigo, int estoque_artigo)
         {
-            preco_artigo = Math.Round(preco_artigo, 2);
             string sql = "Update artigos Set nome_artigo = '" + nome_artigo + "', marca = '" + marca + "', preco_artigo = " + preco_artigo + ", estoque_artigo = '" + estoque_artigo + "' Where Idartigo = '" + Idartigo + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);

@@ -9,24 +9,25 @@ using System.Data.SqlTypes;
 
 namespace TrabalhoTopGames
 {
-    class Jogos
+    class Produtos
     {
 
-        public int Idjogo { get; set; }
-        public string nome_jogo { get; set; }
-        public string genero { get; set; }
+        public int Idproduto { get; set; }
+        public string nome_produto { get; set; }
+        public string tipo_produto { get; set; }
+        public string status { get; set; }
         public string plataforma { get; set; }
         public decimal preco_venda { get; set; }
         public decimal preco_locacao { get; set; }
-        public int estoque_jogo { get; set; }
+        public int estoque_produto { get; set; }
 
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DbTopG.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Aluno\\source\\repos\\ViniciusAlmeid4\\TrabalhoTopGames\\DBT.mdf;Integrated Security=True");
 
-        public List<Jogos> lista_jogo()
+        public List<Produtos> lista_produto()
         {
-            List<Jogos> list_j = new List<Jogos>();
+            List<Produtos> list_p = new List<Produtos>();
 
-            string sql = "Select * From jogos";
+            string sql = "Select * From produtos";
 
             // verificação de conexão, garante que não aconteçam conflitos entre conexões.
 
@@ -40,25 +41,26 @@ namespace TrabalhoTopGames
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                Jogos jogo = new Jogos();
+                Produtos prod = new Produtos();
 
-                jogo.Idjogo = (int)dr["Idjogo"];
-                jogo.nome_jogo = dr["nome_jogo"].ToString();
-                jogo.genero = dr["genero"].ToString();
-                jogo.plataforma = dr["plataforma"].ToString();
-                jogo.preco_venda = (decimal)dr["preco_venda"];
-                jogo.preco_locacao = (decimal)dr["preco_locacao"];
-                jogo.estoque_jogo = (int)dr["estoque_jogo"];
+                prod.Idproduto = (int)dr["Idproduto"];
+                prod.nome_produto = dr["nome_produto"].ToString();
+                prod.tipo_produto = dr["tipo_produto"].ToString();
+                prod.status = dr["status"].ToString();
+                prod.plataforma = dr["plataforma"].ToString();
+                prod.preco_venda = (decimal)dr["preco_venda"];
+                prod.preco_locacao = (decimal)dr["preco_locacao"];
+                prod.estoque_produto = (int)dr["estoque_produto"];
 
-                jogo.preco_venda = Math.Round(jogo.preco_venda, 2);
-                jogo.preco_locacao = Math.Round(jogo.preco_locacao, 2);
+                prod.preco_venda = Math.Round(jogo.preco_venda, 2);
+                prod.preco_locacao = Math.Round(jogo.preco_locacao, 2);
 
-                list_j.Add(jogo);
+                list_p.Add(prod);
 
             }
             con.Close();
 
-            return list_j;
+            return list_p;
 
         }
 
