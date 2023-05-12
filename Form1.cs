@@ -31,6 +31,7 @@ namespace TrabalhoTopGames
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // inserir
             Produtos art = new Produtos();
             if(art.registro_existe_produto(textBox1.Text, textBox2.Text) == true)
             {
@@ -39,14 +40,19 @@ namespace TrabalhoTopGames
             else
             {
                 int estoque;
-                decimal preco;
-                preco = Convert.ToDecimal(##.Trim());
-                estoque = Convert.ToInt32(##.Trim());
-                art.inserir_produto(textBox1.Text, textBox2.Text, preco, estoque);
+                decimal precov, precol;
+                precov = Convert.ToDecimal(textBox6.Text.Trim().Replace(",", "."));
+                precol = Convert.ToDecimal(textBox7.Text.Trim().Replace(",", "."));
+                estoque = Convert.ToInt32(textBox8.Text.Trim());
+                art.inserir_produto(textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, precov, precol, estoque);
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
                 textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+                textBox8.Text = "";
                 MessageBox.Show("Cadastrado com sucesso!");
                 List<Produtos> li = art.lista_produto();
                 dgv1.DataSource = li;
@@ -54,7 +60,8 @@ namespace TrabalhoTopGames
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
+        {   
+            // excluir
             if(textBox5.Text == "")
             {
                 MessageBox.Show("Selecione um id!");
@@ -62,7 +69,7 @@ namespace TrabalhoTopGames
             else
             {
                 Produtos art = new Produtos();
-                int Id = Convert.ToInt32(##.Trim());
+                int Id = Convert.ToInt32(textBox1.Text.Trim());
                 art.exclui_produto(Id);
                 MessageBox.Show("Deletado com sucesso!");
                 List<Produtos> li = art.lista_produto();
@@ -72,10 +79,11 @@ namespace TrabalhoTopGames
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int Id = Convert.ToInt32(textBox5.Text.Trim());
+            // localiza
+            int Id = Convert.ToInt32(textBox1.Text.Trim());
             Produtos art = new Produtos();
             art.localiza_produto(Id);
-            if(art.nome_artigo == null && art.marca == null)
+            if(art.nome_produto == null && art.tipo_produto == null)
             {
                 MessageBox.Show("Id invalido!");
                 textBox1.Text = "";
@@ -83,32 +91,37 @@ namespace TrabalhoTopGames
                 textBox3.Text = "";
                 textBox4.Text = "";
                 textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+                textBox8.Text = "";
             }
             else
             {
-            textBox1.Text = art.nome_artigo;
-            textBox2.Text = art.marca;
-            textBox3.Text = Convert.ToString(art.preco_artigo).Replace(",", ".");
-            textBox4.Text = Convert.ToString(art.estoque_artigo);
+                textBox1.Text = art.Idproduto.ToString();
+                textBox2.Text = art.nome_produto;
+                textBox3.Text = art.tipo_produto;
+                textBox4.Text = art.status;
+                textBox5.Text = art.plataforma;
+                textBox6.Text = art.preco_venda.ToString();
+                textBox7.Text = art.preco_locacao.ToString();
+                textBox8.Text = art.estoque_produto.ToString();
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // atualiza
             if(textBox5.Text != null)
             {
-
-                // SA PORRA DE DECIMAL TÁ DANDO ERRADO
-
                 Produtos prod = new Produtos();
                 int estoque, Id;
-                decimal preco_venda, preco_locacao;
-                Id = Convert.ToInt32(##.Trim());
-                preco_venda = Convert.ToDecimal(##.Trim().Replace(",","."));
-                preco_locacao = Convert.ToDecimal(##.Trim().Replace(",", "."));
-                estoque = Convert.ToInt32(##.Text.Trim());
+                decimal precov, precol;
+                Id = Convert.ToInt32(textBox1.Text.Trim());
+                precov = Convert.ToDecimal(textBox6.Text.Trim().Replace(",","."));
+                precol = Convert.ToDecimal(textBox7.Text.Trim().Replace(",", "."));
+                estoque = Convert.ToInt32(textBox8.Text.Trim());
 
-                prod.atualiza_produto(Id, textBox1.Text, textBox2.Text, preco, estoque);
+                prod.atualiza_produto(Id, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, precov, precol, estoque);
                 MessageBox.Show("Atualizado com sucesso!!");
                 List<Produtos> li = prod.lista_produto();
                 dgv1.DataSource = li;
@@ -117,8 +130,6 @@ namespace TrabalhoTopGames
             {
                 MessageBox.Show("Id inválido!");
             }
-
         }
-
     }
 }

@@ -21,7 +21,7 @@ namespace TrabalhoTopGames
         public decimal preco_locacao { get; set; }
         public int estoque_produto { get; set; }
 
-        SqlConnection con = new SqlConnection("C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DBTop.mdf");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DBTop.mdf;Integrated Security=True");
 
         public List<Produtos> lista_produto()
         {
@@ -56,7 +56,6 @@ namespace TrabalhoTopGames
                 prod.preco_locacao = Math.Round(prod.preco_locacao, 2);
 
                 list_p.Add(prod);
-
             }
             con.Close();
 
@@ -70,6 +69,7 @@ namespace TrabalhoTopGames
             {
                 con.Close();
             }
+            con.Open();
             string sql = "Insert Into produtos Values ('" + nome_produto + "','" + tipo_produto + "','" + status + "','"+plataforma+"'," + preco_venda + ", " + preco_locacao + " , " + estoque_jogo + ")";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -95,28 +95,29 @@ namespace TrabalhoTopGames
 
         public void atualiza_produto(int Idproduto, string nome_produto, string tipo_produto, string status, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
         {
-            string sql = "Update produtos Set nome_produto = '" + nome_produto + "', tipo_produto = '" + tipo_produto + "', status = '"+ status + "', plataforma = '" + plataforma + "', preco_venda = '" + preco_venda + "', preco_locacao = '" + preco_locacao + "', estoque_jogo = '" + estoque_jogo + "' where Idproduto = '" + Idproduto + "'";
+            string sql = "Update produtos Set nome_produto = '" + nome_produto + "', tipo_produto = '" + tipo_produto + "', status = '"+ status + "', plataforma = '" + plataforma + "', preco_venda = '" + preco_venda + "', preco_locacao = '" + preco_locacao + "', estoque_produto = '" + estoque_jogo + "' where Idproduto = '" + Idproduto + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
         }
 
-        public void localiza_produto(int Idproduto)
+        public void localiza_produto(int Idprod)
         {
-            string sql = "Select * From produtos where Idproduto = '" + Idproduto + "'";
+            string sql = "Select * From produtos where Idproduto = '" + Idprod + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                Idproduto = (int)reader["Idproduto"];
                 nome_produto = reader["nome_produto"].ToString();
                 tipo_produto = reader["tipo_produto"].ToString();
                 status = reader["status"].ToString();
                 plataforma = reader["plataforma"].ToString();
                 preco_venda = Math.Round((decimal)reader["preco_venda"], 2);
                 preco_locacao = Math.Round((decimal)reader["preco_locacao"], 2);
-                estoque_produto = (int)reader["estoque_jogo"];
+                estoque_produto = (int)reader["estoque_produto"];
             }
             con.Close();
         }
