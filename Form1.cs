@@ -41,8 +41,8 @@ namespace TrabalhoTopGames
             {
                 int estoque;
                 decimal precov, precol;
-                precov = Convert.ToDecimal(textBox6.Text.Trim().Replace(",", "."));
-                precol = Convert.ToDecimal(textBox7.Text.Trim().Replace(",", "."));
+                precov = Convert.ToDecimal(textBox6.Text.Replace(",", "."));
+                precol = Convert.ToDecimal(textBox7.Text.Replace(",", "."));
                 estoque = Convert.ToInt32(textBox8.Text.Trim());
                 art.inserir_produto(textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, precov, precol, estoque);
                 textBox1.Text = "";
@@ -62,7 +62,7 @@ namespace TrabalhoTopGames
         private void button4_Click(object sender, EventArgs e)
         {   
             // excluir
-            if(textBox5.Text == "")
+            if(textBox1.Text == "")
             {
                 MessageBox.Show("Selecione um id!");
             }
@@ -111,14 +111,14 @@ namespace TrabalhoTopGames
         private void button3_Click(object sender, EventArgs e)
         {
             // atualiza
-            if(textBox5.Text != null)
+            if(textBox1.Text != null)
             {
                 Produtos prod = new Produtos();
                 int estoque, Id;
                 decimal precov, precol;
                 Id = Convert.ToInt32(textBox1.Text.Trim());
-                precov = Convert.ToDecimal(textBox6.Text.Trim().Replace(",","."));
-                precol = Convert.ToDecimal(textBox7.Text.Trim().Replace(",", "."));
+                precov = Convert.ToDecimal(textBox6.Text.Replace(",","."));
+                precol = Convert.ToDecimal(textBox7.Text.Replace(",", "."));
                 estoque = Convert.ToInt32(textBox8.Text.Trim());
 
                 prod.atualiza_produto(Id, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, precov, precol, estoque);

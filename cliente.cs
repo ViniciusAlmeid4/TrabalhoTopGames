@@ -19,7 +19,7 @@ namespace TrabalhoTopGames
         public string email { get; set; }
         public string celular { get; set; }
 
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DbTopG.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection("C:\\Users\\Aluno\\Source\\Repos\\ViniciusAlmeid4\\TrabalhoTopGames\\DbTop.mdf");
 
         public List<Cliente> lista_cliente()
         {
