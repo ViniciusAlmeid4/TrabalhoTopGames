@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
+using System.Net.NetworkInformation;
 
 namespace TrabalhoTopGames
 {
@@ -63,14 +64,19 @@ namespace TrabalhoTopGames
 
         }
 
-        public void inserir_produto(string nome_produto, string tipo_produto, string status, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
+        public void inserir_produto(string nome_produto, string tipo_produto, string status, string plataforma, string preco_venda, string preco_locacao, string estoque_prod)
         {
             if (con.State == ConnectionState.Open)
             {
                 con.Close();
-            }
+            } 
+            int estoque;
+            decimal precov, precol;
+            precov = Convert.ToDecimal(preco_venda);
+            precol = Convert.ToDecimal(preco_locacao);
+            estoque = Convert.ToInt32(estoque_prod.Trim());
             con.Open();
-            string sql = "Insert Into produtos Values ('" + nome_produto + "','" + tipo_produto + "','" + status + "','"+plataforma+"'," + preco_venda + ", " + preco_locacao + " , " + estoque_jogo + ")";
+            string sql = "Insert Into produtos (nome_produto, tipo_produto, status, plataforma, preco_venda, preco_locacao, estoque_produto) Values ('" + nome_produto + "','" + tipo_produto + "','" + status + "','"+plataforma+"'," + preco_venda + ", " + preco_locacao + " , " + estoque_prod + ")";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
         }

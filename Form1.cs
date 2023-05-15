@@ -39,12 +39,7 @@ namespace TrabalhoTopGames
             }
             else
             {
-                int estoque;
-                decimal precov, precol;
-                precov = Convert.ToDecimal(textBox6.Text.Replace(",", "."));
-                precol = Convert.ToDecimal(textBox7.Text.Replace(",", "."));
-                estoque = Convert.ToInt32(textBox8.Text.Trim());
-                art.inserir_produto(textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, precov, precol, estoque);
+                art.inserir_produto(textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text.Replace(',', '.'), textBox7.Text.Replace(',', '.'), textBox8.Text);
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
