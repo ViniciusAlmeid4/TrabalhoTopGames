@@ -18,6 +18,10 @@ namespace TrabalhoTopGames
         public string cpf { get; set; }
         public string email { get; set; }
         public string celular { get; set; }
+        public string cidade { get; set; }
+        public string endereco { get; set; }
+        public string complemento { get; set; }
+
 
         SqlConnection con = new SqlConnection("C:\\Users\\Aluno\\Source\\Repos\\ViniciusAlmeid4\\TrabalhoTopGames\\DbTop.mdf");
 
@@ -47,6 +51,9 @@ namespace TrabalhoTopGames
                 clientes.cpf = dr["cpf"].ToString();
                 clientes.email = dr["email"].ToString();
                 clientes.celular = dr["celular"].ToString();
+                clientes.cidade = dr["celular"].ToString();
+                clientes.endereco = dr["endereco"].ToString();
+                clientes.complemento = dr["complemento"].ToString();
 
                 list_cli.Add(clientes);
 
@@ -57,13 +64,13 @@ namespace TrabalhoTopGames
 
         }
 
-        public void inserir_cliente(string nome_cliente, string cep, string cpf, string email, string celular)
+        public void inserir_cliente(string nome_cliente, string cep, string cpf, string email, string celular, string cidade, string endereco, string complemento)
         {
             if (con.State == ConnectionState.Open)
             {
                 con.Close();
             }
-            string sql = "Insert Into cliente Values ('" + nome_cliente + "','" + cep + "','" + cpf + "','" + email + "', '"+ celular + "')";
+            string sql = "Insert Into cliente Values ('" + nome_cliente + "','" + cep + "','" + cpf + "','" + email + "', '"+ celular + "', '"+cidade+"', '"+endereco+"','"+complemento+"')";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
         }
@@ -86,9 +93,9 @@ namespace TrabalhoTopGames
             return false;
         }
 
-        public void atualiza_cliente(int Idcliente, string nome_cliente, string cep, string cpf, string email, string celular)
+        public void atualiza_cliente(int Idcliente, string nome_cliente, string cep, string cpf, string email, string celular, string cidade, string endereco, string complemento)
         {
-            string sql = "Update cliente Set nome_cliente = '" + nome_cliente + "', cep = '" + cep + "', cpf = '" + cpf + "', email = '" + email + "', celular = '" + celular + "' where Idcliente = '"+Idcliente+"'";
+            string sql = "Update cliente Set nome_cliente = '" + nome_cliente + "', cep = '" + cep + "', cpf = '" + cpf + "', email = '" + email + "', celular = '" + celular + "', cidade = '"+cidade+"', endereco = '"+endereco+"', complemento = '"+complemento+"' where Idcliente = '"+Idcliente+"'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -108,6 +115,9 @@ namespace TrabalhoTopGames
                 cpf = reader["cpf"].ToString();
                 email = reader["email"].ToString();
                 celular = reader["celular"].ToString();
+                cidade = reader["cidade"].ToString();
+                endereco = reader["endereco"].ToString();
+                complemento = reader["complemento"].ToString();
             }
             con.Close();
         }
