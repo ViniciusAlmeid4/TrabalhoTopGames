@@ -23,7 +23,7 @@ namespace TrabalhoTopGames
         public string complemento { get; set; }
 
 
-        SqlConnection con = new SqlConnection("C:\\Users\\Aluno\\Source\\Repos\\ViniciusAlmeid4\\TrabalhoTopGames\\DbTop.mdf");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Aluno\\Source\\Repos\\ViniciusAlmeid4\\TrabalhoTopGames\\Db1.mdf;Integrated Security=True");
 
         public List<Cliente> lista_cliente()
         {
@@ -70,6 +70,8 @@ namespace TrabalhoTopGames
             {
                 con.Close();
             }
+
+            con.Open();
             string sql = "Insert Into cliente Values ('" + nome_cliente + "','" + cep + "','" + cpf + "','" + email + "', '"+ celular + "', '"+cidade+"', '"+endereco+"','"+complemento+"')";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -81,6 +83,7 @@ namespace TrabalhoTopGames
             {
                 con.Close();
             }
+
             string sql = "Select * From cliente where cpf = '" + cpf + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
