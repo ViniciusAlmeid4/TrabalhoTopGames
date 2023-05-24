@@ -264,9 +264,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(17, 267);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(160, 13);
+            this.label10.Size = new System.Drawing.Size(94, 13);
             this.label10.TabIndex = 74;
-            this.label10.Text = "ENDEREÇO com NÚMERO";
+            this.label10.Text = "LOGRADOURO";
             // 
             // txtCep
             // 
