@@ -32,7 +32,8 @@ namespace TrabalhoTopGames
             mod = mod.Replace(",", "");
             mod = mod.Replace(".", "");
             mod = mod.Replace("-", "");
-            mod = mod.Replace("/", "");
+            mod = mod.Replace("(", "");
+            mod = mod.Replace(")", "");
 
             return mod;
         }
@@ -89,7 +90,15 @@ namespace TrabalhoTopGames
                 }
                 else
                 {
-                    //cli.inserir_cliente(txtNome.Text, txtCep.Text, txtCpf.Text, txtEmail.Text, txtCelular.Text, txtCidade.Text, txtEndereco.Text, txtComplemento.Text);
+                    string cpf = txtCpf.Text, celular = txtCelular.Text, cep = txtCep.Text;
+
+                    cpf = Verifica_dados(cpf);
+
+                    celular = Verifica_dados(celular);
+
+                    cep = Verifica_dados(cep);
+
+                    cli.inserir_cliente(txtNome.Text, cep, cpf, txtEmail.Text, celular, txtCidade.Text, txtEndereco.Text, txtComplemento.Text);
                 }
 
                 MessageBox.Show("Inserido com sucesso!!");
@@ -210,6 +219,36 @@ namespace TrabalhoTopGames
 
                 btnEditar.Enabled = true;
                 btnExcluir.Enabled = true;
+            }
+        }
+
+        private void txtCpf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            // Verifica se a tecla pressionada não é maiuscula ou não numerica
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            // Verifica se a tecla pressionada não é maiuscula ou não numerica
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '(') && (e.KeyChar != ')') && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            // Verifica se a tecla pressionada não é maiuscula ou não numerica
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
             }
         }
     }

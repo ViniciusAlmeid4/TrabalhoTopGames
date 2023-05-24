@@ -141,7 +141,7 @@
             this.pbxPesquisar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbxPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("pbxPesquisar.Image")));
-            this.pbxPesquisar.Location = new System.Drawing.Point(260, 216);
+            this.pbxPesquisar.Location = new System.Drawing.Point(272, 216);
             this.pbxPesquisar.Name = "pbxPesquisar";
             this.pbxPesquisar.Size = new System.Drawing.Size(58, 52);
             this.pbxPesquisar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -229,9 +229,9 @@
             // dgvClientes
             // 
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(390, 24);
+            this.dgvClientes.Location = new System.Drawing.Point(367, 24);
             this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(585, 279);
+            this.dgvClientes.Size = new System.Drawing.Size(608, 279);
             this.dgvClientes.TabIndex = 78;
             // 
             // txtCidade
@@ -264,9 +264,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(17, 267);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 13);
+            this.label10.Size = new System.Drawing.Size(160, 13);
             this.label10.TabIndex = 74;
-            this.label10.Text = "ENDEREÇO";
+            this.label10.Text = "ENDEREÇO com NÚMERO";
             // 
             // txtCep
             // 
@@ -274,6 +274,7 @@
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(234, 20);
             this.txtCep.TabIndex = 73;
+            this.txtCep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCep_KeyPress);
             // 
             // label11
             // 
@@ -291,6 +292,7 @@
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(234, 20);
             this.txtCelular.TabIndex = 71;
+            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
             // 
             // label12
             // 
@@ -325,6 +327,7 @@
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(234, 20);
             this.txtCpf.TabIndex = 67;
+            this.txtCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCpf_KeyPress);
             // 
             // label14
             // 
@@ -340,7 +343,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(19, 76);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(368, 20);
+            this.txtNome.Size = new System.Drawing.Size(331, 20);
             this.txtNome.TabIndex = 65;
             // 
             // label15
