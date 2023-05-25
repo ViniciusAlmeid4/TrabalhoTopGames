@@ -22,7 +22,7 @@ namespace TrabalhoTopGames
         public decimal preco_locacao { get; set; }
         public int estoque_produto { get; set; }
 
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Aluno\\source\\repos\\ViniciusAlmeid4\\TrabalhoTopGames\\Db1.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DataCasa.mdf;Integrated Security=True");
 
         public List<Produtos> lista_produto()
         {
@@ -99,16 +99,15 @@ namespace TrabalhoTopGames
             return false;
         }
 
-        public void atualiza_produto(int Idproduto, string nome_produto, string tipo_produto, string status, string plataforma, string preco_venda, string preco_locacao, int estoque_jogo)
+        public void atualiza_produto(int Idproduto, string nome_produto, string tipo_produto, string status, string plataforma, string preco_venda, string preco_locacao, string estoque_prod)
         {
             if (con.State == ConnectionState.Open)
             {
                 con.Close();
             }
-            decimal precov, precol;
-            precov = Convert.ToDecimal(preco_venda);
-            precol = Convert.ToDecimal(preco_locacao);
-            string sql = "Update produtos Set nome_produto = '" + nome_produto + "', tipo_produto = '" + tipo_produto + "', status = '"+ status + "', plataforma = '" + plataforma + "', preco_venda = " + precov + ", preco_locacao = " + precol + ", estoque_produto = '" + estoque_jogo + "' where Idproduto = '" + Idproduto + "'";
+            int estoque;
+            estoque = Convert.ToInt32(estoque_prod.Trim());
+            string sql = "Update produtos Set nome_produto = '" + nome_produto + "', tipo_produto = '" + tipo_produto + "', status = '"+ status + "', plataforma = '" + plataforma + "', preco_venda = " + preco_venda + ", preco_locacao = " + preco_locacao + ", estoque_produto = '" + estoque + "' where Idproduto = '" + Idproduto + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -143,5 +142,7 @@ namespace TrabalhoTopGames
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+
     }
 }

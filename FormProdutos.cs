@@ -144,9 +144,7 @@ namespace TrabalhoTopGames
                         txtPrel.Text = "0.00";
                     }
 
-                    int estoque = Convert.ToInt32(txtEstoque.Text);
-
-                    prod.atualiza_produto(id, txtNome.Text, txtTipo.Text, txtStatus.Text, txtPlataforma.Text, txtPrev.Text, txtPrel.Text, estoque);
+                    prod.atualiza_produto(id, txtNome.Text, txtTipo.Text, txtStatus.Text, txtPlataforma.Text, txtPrev.Text, txtPrel.Text, txtEstoque.Text);
 
                     txtId.Text = "";
                     txtNome.Text = "";
@@ -192,20 +190,42 @@ namespace TrabalhoTopGames
                     MessageBox.Show("Id Inválido!!");
                 }
 
-                string precov = prod.preco_venda.ToString(), precol = prod.preco_locacao.ToString();
-
                 txtId.Text = prod.Idproduto.ToString();
                 txtNome.Text = prod.nome_produto.ToString();
                 txtTipo.Text = prod.tipo_produto.ToString();
                 txtStatus.Text = prod.status.ToString();
                 txtPlataforma.Text = prod.plataforma.ToString();
-                txtPrev.Text = precov.Replace(",",".");
-                txtPrel.Text = precol.Replace(",",".");
+                txtPrev.Text = (prod.preco_venda.ToString()).Replace(",",".");
+                txtPrel.Text = (prod.preco_locacao.ToString()).Replace(",",".");
                 txtEstoque.Text = prod.estoque_produto.ToString();
 
                 btnEditar.Enabled = true;
                 btnExcluir.Enabled = true;
             }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Produtos prod = new Produtos();
+
+            if (txtId.Text == "")
+            {
+                MessageBox.Show("Digite o ID do cliente a ser deletado!!");
+            }
+            else
+            {
+                int id = Convert.ToInt32(txtId.Text);
+
+                prod.exclui_produto(id);
+
+                MessageBox.Show("Excluido com sucesso!!");
+
+            }
+
+            Listar_produto();
+
+            btnEditar.Enabled = false;
+            btnExcluir.Enabled = false;
         }
     }
 }

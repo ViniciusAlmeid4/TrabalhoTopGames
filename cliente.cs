@@ -23,7 +23,7 @@ namespace TrabalhoTopGames
         public string complemento { get; set; }
 
 
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Aluno\\Source\\Repos\\ViniciusAlmeid4\\TrabalhoTopGames\\Db1.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DataCasa.mdf;Integrated Security=True");
 
         public List<Cliente> lista_cliente()
         {
