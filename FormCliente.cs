@@ -75,7 +75,6 @@ namespace TrabalhoTopGames
             {
                 MessageBox.Show("Preencha as informações de forma correta!!");
 
-                txtCpf.Text = Verifica_dados(txtCpf.Text);
             }
             else
             {
@@ -108,15 +107,13 @@ namespace TrabalhoTopGames
                 txtId.Text = "";
                 txtNome.Text = "";
                 txtCep.Text = "";
-                txtCpf.Text = Verifica_dados(txtCpf.Text);
+                txtCpf.Text = "";
                 txtEmail.Text = "";
                 txtCelular.Text = "";
                 txtCidade.Text = "";
                 txtEndereco.Text = "";
                 txtComplemento.Text = "";
             }
-
-
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

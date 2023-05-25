@@ -99,9 +99,16 @@ namespace TrabalhoTopGames
             return false;
         }
 
-        public void atualiza_produto(int Idproduto, string nome_produto, string tipo_produto, string status, string plataforma, decimal preco_venda, decimal preco_locacao, int estoque_jogo)
+        public void atualiza_produto(int Idproduto, string nome_produto, string tipo_produto, string status, string plataforma, string preco_venda, string preco_locacao, int estoque_jogo)
         {
-            string sql = "Update produtos Set nome_produto = '" + nome_produto + "', tipo_produto = '" + tipo_produto + "', status = '"+ status + "', plataforma = '" + plataforma + "', preco_venda = '" + preco_venda + "', preco_locacao = '" + preco_locacao + "', estoque_produto = '" + estoque_jogo + "' where Idproduto = '" + Idproduto + "'";
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            decimal precov, precol;
+            precov = Convert.ToDecimal(preco_venda);
+            precol = Convert.ToDecimal(preco_locacao);
+            string sql = "Update produtos Set nome_produto = '" + nome_produto + "', tipo_produto = '" + tipo_produto + "', status = '"+ status + "', plataforma = '" + plataforma + "', preco_venda = " + precov + ", preco_locacao = " + precol + ", estoque_produto = '" + estoque_jogo + "' where Idproduto = '" + Idproduto + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

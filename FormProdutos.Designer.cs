@@ -63,6 +63,7 @@
             this.btnSair.TabIndex = 43;
             this.btnSair.Text = "SAIR";
             this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnExcluir
             // 
@@ -85,6 +86,7 @@
             this.btnEditar.TabIndex = 41;
             this.btnEditar.Text = "EDITAR";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnInserir
             // 
@@ -96,6 +98,7 @@
             this.btnInserir.TabIndex = 40;
             this.btnInserir.Text = "INSERIR";
             this.btnInserir.UseVisualStyleBackColor = false;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // btnLocalizar
             // 
@@ -107,6 +110,7 @@
             this.btnLocalizar.TabIndex = 39;
             this.btnLocalizar.Text = "LOCALIZAR";
             this.btnLocalizar.UseVisualStyleBackColor = false;
+            this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
             // 
             // dgvProdutos
             // 
@@ -122,6 +126,7 @@
             this.txtEstoque.Name = "txtEstoque";
             this.txtEstoque.Size = new System.Drawing.Size(234, 20);
             this.txtEstoque.TabIndex = 37;
+            this.txtEstoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoque_KeyPress);
             // 
             // label8
             // 
@@ -139,6 +144,7 @@
             this.txtPrel.Name = "txtPrel";
             this.txtPrel.Size = new System.Drawing.Size(234, 20);
             this.txtPrel.TabIndex = 35;
+            this.txtPrel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrel_KeyPress);
             // 
             // label7
             // 
@@ -156,6 +162,7 @@
             this.txtPrev.Name = "txtPrev";
             this.txtPrev.Size = new System.Drawing.Size(234, 20);
             this.txtPrev.TabIndex = 33;
+            this.txtPrev.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrev_KeyPress);
             // 
             // label6
             // 
