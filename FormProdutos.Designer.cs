@@ -42,20 +42,22 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtPlataforma = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtStatus = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtTipo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbxTipo = new System.Windows.Forms.ComboBox();
+            this.cbxStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSair
             // 
             this.btnSair.BackColor = System.Drawing.Color.Red;
+            this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Location = new System.Drawing.Point(833, 326);
             this.btnSair.Name = "btnSair";
@@ -68,6 +70,8 @@
             // btnExcluir
             // 
             this.btnExcluir.BackColor = System.Drawing.Color.Firebrick;
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Location = new System.Drawing.Point(658, 326);
             this.btnExcluir.Name = "btnExcluir";
@@ -79,7 +83,9 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnEditar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.Location = new System.Drawing.Point(484, 326);
             this.btnEditar.Name = "btnEditar";
@@ -91,7 +97,9 @@
             // 
             // btnInserir
             // 
-            this.btnInserir.BackColor = System.Drawing.Color.Green;
+            this.btnInserir.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnInserir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInserir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInserir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInserir.Location = new System.Drawing.Point(311, 326);
             this.btnInserir.Name = "btnInserir";
@@ -103,7 +111,9 @@
             // 
             // btnLocalizar
             // 
-            this.btnLocalizar.BackColor = System.Drawing.Color.Silver;
+            this.btnLocalizar.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnLocalizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLocalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLocalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLocalizar.Location = new System.Drawing.Point(137, 19);
             this.btnLocalizar.Name = "btnLocalizar";
@@ -115,10 +125,11 @@
             // 
             // dgvProdutos
             // 
+            this.dgvProdutos.BackgroundColor = System.Drawing.Color.Beige;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.Location = new System.Drawing.Point(390, 19);
+            this.dgvProdutos.Location = new System.Drawing.Point(333, 19);
             this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.Size = new System.Drawing.Size(585, 279);
+            this.dgvProdutos.Size = new System.Drawing.Size(642, 279);
             this.dgvProdutos.TabIndex = 38;
             // 
             // txtEstoque
@@ -188,16 +199,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(16, 214);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 13);
+            this.label5.Size = new System.Drawing.Size(146, 13);
             this.label5.TabIndex = 30;
-            this.label5.Text = "PLATAFORMA";
-            // 
-            // txtStatus
-            // 
-            this.txtStatus.Location = new System.Drawing.Point(16, 178);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(234, 20);
-            this.txtStatus.TabIndex = 29;
+            this.label5.Text = "PLATAFORMA / MARCA";
             // 
             // label4
             // 
@@ -208,13 +212,6 @@
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 28;
             this.label4.Text = "STATUS";
-            // 
-            // txtTipo
-            // 
-            this.txtTipo.Location = new System.Drawing.Point(16, 130);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(234, 20);
-            this.txtTipo.TabIndex = 27;
             // 
             // label3
             // 
@@ -230,7 +227,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(16, 80);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(368, 20);
+            this.txtNome.Size = new System.Drawing.Size(301, 20);
             this.txtNome.TabIndex = 25;
             // 
             // label2
@@ -260,11 +257,30 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "ID PRODUTO";
             // 
+            // cbxTipo
+            // 
+            this.cbxTipo.FormattingEnabled = true;
+            this.cbxTipo.Location = new System.Drawing.Point(16, 130);
+            this.cbxTipo.Name = "cbxTipo";
+            this.cbxTipo.Size = new System.Drawing.Size(108, 21);
+            this.cbxTipo.TabIndex = 44;
+            // 
+            // cbxStatus
+            // 
+            this.cbxStatus.FormattingEnabled = true;
+            this.cbxStatus.Location = new System.Drawing.Point(16, 178);
+            this.cbxStatus.Name = "cbxStatus";
+            this.cbxStatus.Size = new System.Drawing.Size(108, 21);
+            this.cbxStatus.TabIndex = 45;
+            // 
             // FormProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Beige;
             this.ClientSize = new System.Drawing.Size(991, 411);
+            this.Controls.Add(this.cbxStatus);
+            this.Controls.Add(this.cbxTipo);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
@@ -279,16 +295,15 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPlataforma);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Name = "FormProdutos";
-            this.Text = "FormProdutos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cadastro e Atualização de Produtos";
             this.Load += new System.EventHandler(this.FormProdutos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
             this.ResumeLayout(false);
@@ -312,13 +327,13 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPlataforma;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbxTipo;
+        private System.Windows.Forms.ComboBox cbxStatus;
     }
 }

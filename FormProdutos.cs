@@ -24,6 +24,31 @@ namespace TrabalhoTopGames
             dgvProdutos.DataSource = prod;
         }
 
+        public void Carrega_tipo_disp()
+        {
+            cbxTipo.DisplayMember = "Text";
+
+            var tipo_prod = new[]{
+                new { Text = "Jogo"},
+                new { Text = "Artigo"}
+            };
+               
+            cbxTipo.DataSource = tipo_prod;
+
+            cbxStatus.DisplayMember = "Text";
+
+            var status_prod = new[]{
+                new { Text = "Disp"},
+                new { Text = "Loc/"},
+                new { Text = "Vend"}
+            };
+
+            cbxStatus.DataSource = status_prod;
+
+            cbxTipo.Text = "";
+            cbxStatus.Text = "";
+        }
+
         private void FormProdutos_Load(object sender, EventArgs e)
         {
             Produtos prod = new Produtos();
@@ -31,6 +56,7 @@ namespace TrabalhoTopGames
             dgvProdutos.DataSource = list_prod;
             btnExcluir.Enabled = false;
             btnEditar.Enabled = false;
+            Carrega_tipo_disp();
             this.txtNome.Focus();
         }
 
@@ -38,7 +64,7 @@ namespace TrabalhoTopGames
         {
             Produtos prod = new Produtos();
 
-            if (txtNome.Text == "" || txtTipo.Text == "" || txtStatus.Text == "" || txtPlataforma.Text == "" || txtPrev.Text == "" || txtEstoque.Text == "")
+            if (txtNome.Text == "" || cbxTipo.Text == "" || cbxStatus.Text == "" || txtPlataforma.Text == "" || txtPrev.Text == "" || txtEstoque.Text == "")
             {
 
                 MessageBox.Show("Preencha as informações de forma correta!!");
@@ -51,14 +77,14 @@ namespace TrabalhoTopGames
                     txtPrel.Text = "0.00";
                 }
 
-                if (prod.registro_existe_produto(txtNome.Text,txtTipo.Text) == true)
+                if (prod.registro_existe_produto(txtNome.Text,cbxTipo.Text) == true)
                 {
-                    MessageBox.Show("Produto " + txtNome.Text + " do tipo " + txtTipo.Text + " já existe!!");
+                    MessageBox.Show("Produto " + txtNome.Text + " do tipo " + cbxTipo.Text + " já existe!!");
                 }
                 else
                 {
 
-                    prod.inserir_produto(txtNome.Text, txtTipo.Text, txtStatus.Text, txtPlataforma.Text, txtPrev.Text, txtPrel.Text, txtEstoque.Text);
+                    prod.inserir_produto(txtNome.Text, cbxTipo.Text, cbxStatus.Text, txtPlataforma.Text, txtPrev.Text, txtPrel.Text, txtEstoque.Text);
                 
                 }
 
@@ -68,8 +94,8 @@ namespace TrabalhoTopGames
 
                 txtId.Text = "";
                 txtNome.Text = "";
-                txtTipo.Text = "";
-                txtStatus.Text = "";
+                cbxTipo.Text = "";
+                cbxStatus.Text = "";
                 txtPlataforma.Text = "";
                 txtPrev.Text = "";
                 txtPrel.Text = "";
@@ -130,26 +156,26 @@ namespace TrabalhoTopGames
 
             int id = Convert.ToInt32(txtId.Text);
 
-            if (txtNome.Text == "" || txtTipo.Text == "" || txtStatus.Text == "" || txtPlataforma.Text == "" || txtPrev.Text == "" || txtEstoque.Text == "")
+            if (txtNome.Text == "" || cbxTipo.Text == "" || cbxStatus.Text == "" || txtPlataforma.Text == "" || txtPrev.Text == "" || txtEstoque.Text == "")
             {
                 MessageBox.Show("Preencha as informações de forma correta!!");
             }
             else
             {
 
-                if (prod.registro_existe_produto(txtNome.Text,txtTipo.Text) == true)
+                if (prod.registro_existe_produto(txtNome.Text,cbxTipo.Text) == true)
                 {
                     if (txtPrel.Text == "")
                     {
                         txtPrel.Text = "0.00";
                     }
 
-                    prod.atualiza_produto(id, txtNome.Text, txtTipo.Text, txtStatus.Text, txtPlataforma.Text, txtPrev.Text, txtPrel.Text, txtEstoque.Text);
+                    prod.atualiza_produto(id, txtNome.Text, cbxTipo.Text, cbxStatus.Text, txtPlataforma.Text, txtPrev.Text, txtPrel.Text, txtEstoque.Text);
 
                     txtId.Text = "";
                     txtNome.Text = "";
-                    txtTipo.Text = "";
-                    txtStatus.Text = "";
+                    cbxTipo.Text = "";
+                    cbxStatus.Text = "";
                     txtPlataforma.Text = "";
                     txtPrev.Text = "";
                     txtPrel.Text = "";
@@ -189,11 +215,10 @@ namespace TrabalhoTopGames
                 {
                     MessageBox.Show("Id Inválido!!");
                 }
-
                 txtId.Text = prod.Idproduto.ToString();
                 txtNome.Text = prod.nome_produto.ToString();
-                txtTipo.Text = prod.tipo_produto.ToString();
-                txtStatus.Text = prod.status.ToString();
+                cbxTipo.Text = prod.tipo_produto.ToString();
+                cbxStatus.Text = prod.status.ToString();
                 txtPlataforma.Text = prod.plataforma.ToString();
                 txtPrev.Text = (prod.preco_venda.ToString()).Replace(",",".");
                 txtPrel.Text = (prod.preco_locacao.ToString()).Replace(",",".");

@@ -16,7 +16,7 @@ namespace TrabalhoTopGames
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormProdutos());
+            Application.Run(new FormCliente());
         }
     }
 }

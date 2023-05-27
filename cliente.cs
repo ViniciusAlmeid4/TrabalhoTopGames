@@ -52,7 +52,7 @@ namespace TrabalhoTopGames
                 clientes.email = dr["email"].ToString();
                 clientes.celular = dr["celular"].ToString();
                 clientes.cidade = dr["celular"].ToString();
-                clientes.endereco = dr["endereco"].ToString();
+                clientes.endereco = dr["logradouro"].ToString();
                 clientes.complemento = dr["complemento"].ToString();
 
                 list_cli.Add(clientes);
@@ -72,7 +72,7 @@ namespace TrabalhoTopGames
             }
 
             con.Open();
-            string sql = "Insert Into cliente Values ('" + nome_cliente + "','" + cep + "','" + cpf + "','" + email + "', '"+ celular + "', '"+cidade+"', '"+endereco+"','"+complemento+"')";
+            string sql = "Insert Into cliente Values ('" + nome_cliente + "','" + cpf + "','" + email + "','" + celular + "', '"+ cep + "', '"+endereco+"', '"+cidade+"','"+complemento+"')";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
         }
@@ -119,7 +119,7 @@ namespace TrabalhoTopGames
                 email = reader["email"].ToString();
                 celular = reader["celular"].ToString();
                 cidade = reader["cidade"].ToString();
-                endereco = reader["endereco"].ToString();
+                endereco = reader["logradouro"].ToString();
                 complemento = reader["complemento"].ToString();
             }
             con.Close();
