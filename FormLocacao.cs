@@ -14,7 +14,7 @@ namespace TrabalhoTopGames
     public partial class FormLocacao : Form
     {
 
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DataCasa.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Aluno\\Source\\Repos\\ViniciusAlmeid4\\TrabalhoTopGames\\DataSenai.mdf;Integrated Security=True");
 
         public FormLocacao()
         {
@@ -214,7 +214,7 @@ namespace TrabalhoTopGames
             con.Open();
             foreach (DataGridViewRow dr in dgvLocacao.Rows)
             {
-                SqlCommand cmditens = new SqlCommand("iNSERT INTO locacao(data_locacao, duracao, Idproduto, Idcliente, valor) VALUES (@data_locacao, @duracao, @Idproduto, @Idcliente, @valor)", con);
+                SqlCommand cmditens = new SqlCommand("InserirLocacao", con);
 
                 cbxCliente.Text = dr.Cells[0].ToString();
                 cbxProduto.Text = dr.Cells[1].ToString();

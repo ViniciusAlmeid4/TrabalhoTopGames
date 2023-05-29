@@ -55,10 +55,17 @@ namespace TrabalhoTopGames
             }
             else
             {
-                BuscaCEP busca = new BuscaCEP(txtCep.Text);
-                txtComplemento.Text = busca.complemento;
-                txtEndereco.Text = busca.endereco;
-                txtCidade.Text = busca.cidade;
+                if((txtCelular.Text.ToString()).Length > 7)
+                {
+                    MessageBox.Show("Insira um CEP corretamente");
+                }
+                else
+                {
+                    BuscaCEP busca = new BuscaCEP(txtCep.Text);
+                    txtComplemento.Text = busca.complemento;
+                    txtEndereco.Text = busca.endereco;
+                    txtCidade.Text = busca.cidade;
+                }
             }
         }
 
