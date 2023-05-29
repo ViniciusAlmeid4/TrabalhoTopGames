@@ -70,6 +70,7 @@
             this.btnExcluirItem.TabIndex = 100;
             this.btnExcluirItem.Text = "EXCLUIR ITEM";
             this.btnExcluirItem.UseVisualStyleBackColor = false;
+            this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
             // 
             // btnEditarItem
             // 
@@ -81,6 +82,7 @@
             this.btnEditarItem.TabIndex = 99;
             this.btnEditarItem.Text = "EDITAR ITEM";
             this.btnEditarItem.UseVisualStyleBackColor = false;
+            this.btnEditarItem.Click += new System.EventHandler(this.btnEditarItem_Click);
             // 
             // btnSair
             // 
@@ -104,6 +106,7 @@
             this.btnFinalizarLocacao.TabIndex = 97;
             this.btnFinalizarLocacao.Text = "FINALIZAR LOCAÇÃO ";
             this.btnFinalizarLocacao.UseVisualStyleBackColor = false;
+            this.btnFinalizarLocacao.Click += new System.EventHandler(this.btnFinalizarLocacao_Click);
             // 
             // btnAbrirLocacao
             // 
@@ -136,6 +139,7 @@
             this.dgvLocacao.Name = "dgvLocacao";
             this.dgvLocacao.Size = new System.Drawing.Size(585, 279);
             this.dgvLocacao.TabIndex = 94;
+            this.dgvLocacao.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLocacao_CellClick);
             // 
             // txtDuracao
             // 
@@ -143,6 +147,7 @@
             this.txtDuracao.Name = "txtDuracao";
             this.txtDuracao.Size = new System.Drawing.Size(234, 20);
             this.txtDuracao.TabIndex = 93;
+            this.txtDuracao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDuracao_KeyPress);
             // 
             // label4
             // 

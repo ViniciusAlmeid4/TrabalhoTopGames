@@ -81,6 +81,7 @@ namespace TrabalhoTopGames
             Carrega_cliente();
             Carrega_produto();
 
+            btnAbrirLocacao.Enabled = false;
             cbxCliente.Enabled = true;
             cbxProduto.Enabled = true;
             btnFinalizarLocacao.Enabled = true;
@@ -101,11 +102,10 @@ namespace TrabalhoTopGames
             {
                 con.Close();
             }
-            string sql = "SELECT preco_locacao FROM produtos WHERE Idproduto = "+cbxProduto.SelectedValue.ToString()+"";
-            SqlCommand cmd = new SqlCommand(sql, con);
             con.Open();
-            decimal Preco = cmd.ExecuteNonQuery();
-            lblValorProd.Text = Preco.ToString();
+            string sql = "SELECT preco_locacao FROM produtos WHERE Idproduto = "+ cbxProduto.SelectedValue.ToString() + "";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            lblValorProd.Text = (cmd.ExecuteScalar()).ToString();
             lblIdProd.Text = cbxProduto.SelectedValue.ToString();
             txtDuracao.Focus();
             con.Close();
@@ -125,7 +125,7 @@ namespace TrabalhoTopGames
             {
                 DataGridViewRow item = new DataGridViewRow();
                 item.CreateCells(dgvLocacao);
-                item.Cells[0].Value = cbxProduto.SelectedValue;
+                item.Cells[0].Value = cbxCliente.Text;
                 item.Cells[1].Value = cbxProduto.Text;
                 item.Cells[2].Value = txtDuracao.Text;
                 item.Cells[3].Value = lblValorProd.Text;
@@ -144,8 +144,90 @@ namespace TrabalhoTopGames
             }
             else
             {
-                MessageBox.Show("Produto já está inserido na venda!!");
+                MessageBox.Show("Produto já está inserido na Locacao!!");
             }
+        }
+
+        private void dgvLocacao_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = this.dgvLocacao.Rows[e.RowIndex];
+            if (row.Cells[1].Value == null)
+            {
+                lblValorProd.Text = "";
+                cbxProduto.Text = "";
+                cbxCliente.Text = "";
+                txtDuracao.Text = "";
+                lblIdProd.Text = "";
+            }
+            else
+            {
+                cbxProduto.Text = row.Cells[1].Value.ToString();
+                cbxCliente.Text = row.Cells[0].Value.ToString();
+                txtDuracao.Text = row.Cells[2].Value.ToString();
+                lblValorProd.Text = row.Cells[3].Value.ToString();
+                lblIdProd.Text = cbxProduto.SelectedValue.ToString();
+            }
+        }
+
+        private void btnEditarItem_Click(object sender, EventArgs e)
+        {
+            int linha = dgvLocacao.CurrentRow.Index;
+            dgvLocacao.Rows[linha].Cells[0].Value = cbxCliente.Text;
+            dgvLocacao.Rows[linha].Cells[1].Value = cbxProduto.Text;
+            dgvLocacao.Rows[linha].Cells[2].Value = txtDuracao.Text;
+            dgvLocacao.Rows[linha].Cells[3].Value = lblValorProd.Text;
+        }
+
+        private void btnExcluirItem_Click(object sender, EventArgs e)
+        {
+            int linha = dgvLocacao.CurrentRow.Index;
+            dgvLocacao.Rows.RemoveAt(linha);
+            dgvLocacao.Refresh();
+            lblValorProd.Text = "";
+            cbxProduto.Text = "";
+            cbxCliente.Text = "";
+            txtDuracao.Text = "";
+            lblIdProd.Text = "";
+
+            decimal soma = 0;
+            foreach (DataGridViewRow dr in dgvLocacao.Rows)
+            {
+                soma += Convert.ToDecimal(dr.Cells[3].Value);
+                lblValorTotal.Text = Convert.ToString(soma);
+            }
+        }
+
+        private void txtDuracao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnFinalizarLocacao_Click(object sender, EventArgs e)
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+            foreach (DataGridViewRow dr in dgvLocacao.Rows)
+            {
+                SqlCommand cmditens = new SqlCommand("iNSERT INTO locacao(data_locacao, duracao, Idproduto, Idcliente, valor) VALUES (@data_locacao, @duracao, @Idproduto, @Idcliente, @valor)", con);
+
+                cbxCliente.Text = dr.Cells[0].ToString();
+                cbxProduto.Text = dr.Cells[1].ToString();
+
+                cmditens.CommandType = CommandType.StoredProcedure;
+                cmditens.Parameters.AddWithValue("@Idproduto", SqlDbType.Int).Value = Convert.ToInt32(cbxProduto.SelectedValue.ToString());
+                cmditens.Parameters.AddWithValue("@Idcliente", SqlDbType.Int).Value = Convert.ToInt32(cbxCliente.SelectedValue.ToString());
+                cmditens.Parameters.AddWithValue("@duracao", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[2].Value);
+                cmditens.Parameters.AddWithValue("@valor", SqlDbType.Int).Value = Convert.ToDecimal(dr.Cells[3].Value);
+                cmditens.Parameters.AddWithValue("@data_locacao", SqlDbType.NChar).Value = DateTime.Now;
+                cmditens.ExecuteNonQuery();
+            }
+            con.Close();
         }
     }
 }
