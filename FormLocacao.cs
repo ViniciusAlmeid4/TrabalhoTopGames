@@ -73,7 +73,9 @@ namespace TrabalhoTopGames
 
         private void btnAbrirLocacao_Click(object sender, EventArgs e)
         {
+            dgvLocacao.Columns.Add("Id_cliente", "Id Cliente");
             dgvLocacao.Columns.Add("Cliente", "Cliente");
+            dgvLocacao.Columns.Add("Id_produto", "Id produto");
             dgvLocacao.Columns.Add("Produto", "Produto");
             dgvLocacao.Columns.Add("Duracao", "Duração");
             dgvLocacao.Columns.Add("Valor_Prod", "Valor Produto");
@@ -161,8 +163,8 @@ namespace TrabalhoTopGames
             }
             else
             {
-                cbxProduto.Text = row.Cells[1].Value.ToString();
                 cbxCliente.Text = row.Cells[0].Value.ToString();
+                cbxProduto.Text = row.Cells[1].Value.ToString();
                 txtDuracao.Text = row.Cells[2].Value.ToString();
                 lblValorProd.Text = row.Cells[3].Value.ToString();
                 lblIdProd.Text = cbxProduto.SelectedValue.ToString();
@@ -172,10 +174,12 @@ namespace TrabalhoTopGames
         private void btnEditarItem_Click(object sender, EventArgs e)
         {
             int linha = dgvLocacao.CurrentRow.Index;
-            dgvLocacao.Rows[linha].Cells[0].Value = cbxCliente.Text;
-            dgvLocacao.Rows[linha].Cells[1].Value = cbxProduto.Text;
-            dgvLocacao.Rows[linha].Cells[2].Value = txtDuracao.Text;
-            dgvLocacao.Rows[linha].Cells[3].Value = lblValorProd.Text;
+            dgvLocacao.Rows[linha].Cells[0].Value = cbxCliente.SelectedValue;
+            dgvLocacao.Rows[linha].Cells[1].Value = cbxCliente.Text;
+            dgvLocacao.Rows[linha].Cells[2].Value = cbxProduto.SelectedValue;
+            dgvLocacao.Rows[linha].Cells[3].Value = cbxProduto.Text;
+            dgvLocacao.Rows[linha].Cells[4].Value = txtDuracao.Text;
+            dgvLocacao.Rows[linha].Cells[5].Value = lblValorProd.Text;
         }
 
         private void btnExcluirItem_Click(object sender, EventArgs e)
@@ -192,7 +196,7 @@ namespace TrabalhoTopGames
             decimal soma = 0;
             foreach (DataGridViewRow dr in dgvLocacao.Rows)
             {
-                soma += Convert.ToDecimal(dr.Cells[3].Value);
+                soma += Convert.ToDecimal(dr.Cells[5].Value);
                 lblValorTotal.Text = Convert.ToString(soma);
             }
         }
@@ -216,17 +220,30 @@ namespace TrabalhoTopGames
             {
                 SqlCommand cmditens = new SqlCommand("InserirLocacao", con);
 
-                cbxCliente.Text = dr.Cells[0].ToString();
-                cbxProduto.Text = dr.Cells[1].ToString();
-
                 cmditens.CommandType = CommandType.StoredProcedure;
-                cmditens.Parameters.AddWithValue("@Idproduto", SqlDbType.Int).Value = Convert.ToInt32(cbxProduto.SelectedValue.ToString());
-                cmditens.Parameters.AddWithValue("@Idcliente", SqlDbType.Int).Value = Convert.ToInt32(cbxCliente.SelectedValue.ToString());
-                cmditens.Parameters.AddWithValue("@duracao", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[2].Value);
-                cmditens.Parameters.AddWithValue("@valor", SqlDbType.Int).Value = Convert.ToDecimal(dr.Cells[3].Value);
+                cmditens.Parameters.AddWithValue("@Idproduto", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[2]);
+                cmditens.Parameters.AddWithValue("@Idcliente", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[0]);
+                cmditens.Parameters.AddWithValue("@duracao", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[4].Value);
+                cmditens.Parameters.AddWithValue("@valor", SqlDbType.Int).Value = Convert.ToDecimal(dr.Cells[5].Value);
                 cmditens.Parameters.AddWithValue("@data_locacao", SqlDbType.NChar).Value = DateTime.Now;
                 cmditens.ExecuteNonQuery();
             }
+
+            cbxCliente.Enabled = false;
+            cbxProduto.Enabled = false;
+            btnFinalizarLocacao.Enabled = false;
+            btnInserirItem.Enabled = false;
+            btnEditarItem.Enabled = false;
+            btnExcluirItem.Enabled = false;
+            txtDuracao.Enabled = false;
+            btnAbrirLocacao.Enabled = true;
+
+            lblIdProd.Text = "";
+            lblValorProd.Text = "";
+            lblValorTotal.Text = "";
+            cbxCliente.Text = "";
+            cbxProduto.Text = "";
+
             con.Close();
         }
     }
