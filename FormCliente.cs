@@ -55,7 +55,7 @@ namespace TrabalhoTopGames
             }
             else
             {
-                if((txtCelular.Text.ToString()).Length > 7)
+                if((txtCep.Text.ToString()).Length > 8)
                 {
                     MessageBox.Show("Insira um CEP corretamente");
                 }

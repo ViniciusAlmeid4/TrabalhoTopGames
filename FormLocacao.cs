@@ -14,7 +14,7 @@ namespace TrabalhoTopGames
     public partial class FormLocacao : Form
     {
 
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Aluno\\Source\\Repos\\ViniciusAlmeid4\\TrabalhoTopGames\\DataSenai.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\usuario\\Documents\\TrabalhosSenai\\TrabalhoTopGames\\DataCasa.mdf;Integrated Security=True");
 
         public FormLocacao()
         {
@@ -127,10 +127,12 @@ namespace TrabalhoTopGames
             {
                 DataGridViewRow item = new DataGridViewRow();
                 item.CreateCells(dgvLocacao);
-                item.Cells[0].Value = cbxCliente.Text;
-                item.Cells[1].Value = cbxProduto.Text;
-                item.Cells[2].Value = txtDuracao.Text;
-                item.Cells[3].Value = lblValorProd.Text;
+                item.Cells[0].Value = cbxCliente.SelectedValue.ToString();
+                item.Cells[1].Value = cbxCliente.Text;
+                item.Cells[2].Value = cbxProduto.SelectedValue.ToString();
+                item.Cells[3].Value = cbxProduto.Text;
+                item.Cells[4].Value = txtDuracao.Text;
+                item.Cells[5].Value = lblValorProd.Text;
                 dgvLocacao.Rows.Add(item);
                 lblValorProd.Text = "";
                 cbxProduto.Text = "";
@@ -140,7 +142,7 @@ namespace TrabalhoTopGames
                 decimal soma = 0;
                 foreach (DataGridViewRow dr in dgvLocacao.Rows)
                 {
-                    soma += Convert.ToDecimal(dr.Cells[3].Value);
+                    soma += Convert.ToDecimal(dr.Cells[5].Value);
                     lblValorTotal.Text = Convert.ToString(soma);
                 }
             }
@@ -163,10 +165,10 @@ namespace TrabalhoTopGames
             }
             else
             {
-                cbxCliente.Text = row.Cells[0].Value.ToString();
-                cbxProduto.Text = row.Cells[1].Value.ToString();
-                txtDuracao.Text = row.Cells[2].Value.ToString();
-                lblValorProd.Text = row.Cells[3].Value.ToString();
+                cbxCliente.Text = row.Cells[1].Value.ToString();
+                cbxProduto.Text = row.Cells[3].Value.ToString();
+                txtDuracao.Text = row.Cells[4].Value.ToString();
+                lblValorProd.Text = row.Cells[5].Value.ToString();
                 lblIdProd.Text = cbxProduto.SelectedValue.ToString();
             }
         }
@@ -218,15 +220,22 @@ namespace TrabalhoTopGames
             con.Open();
             foreach (DataGridViewRow dr in dgvLocacao.Rows)
             {
-                SqlCommand cmditens = new SqlCommand("InserirLocacao", con);
+                if (dr.Cells[5].Value == null)
+                {
+                    // Não insere locações sem preço!!
+                }
+                else
+                {
+                    SqlCommand cmditens = new SqlCommand("InserirLocacao", con);
 
-                cmditens.CommandType = CommandType.StoredProcedure;
-                cmditens.Parameters.AddWithValue("@Idproduto", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[2]);
-                cmditens.Parameters.AddWithValue("@Idcliente", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[0]);
-                cmditens.Parameters.AddWithValue("@duracao", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[4].Value);
-                cmditens.Parameters.AddWithValue("@valor", SqlDbType.Int).Value = Convert.ToDecimal(dr.Cells[5].Value);
-                cmditens.Parameters.AddWithValue("@data_locacao", SqlDbType.NChar).Value = DateTime.Now;
-                cmditens.ExecuteNonQuery();
+                    cmditens.CommandType = CommandType.StoredProcedure;
+                    cmditens.Parameters.AddWithValue("@Idproduto", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[2].Value);
+                    cmditens.Parameters.AddWithValue("@Idcliente", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[0].Value);
+                    cmditens.Parameters.AddWithValue("@duracao", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[4].Value);
+                    cmditens.Parameters.AddWithValue("@valor", SqlDbType.Int).Value = Convert.ToDecimal(dr.Cells[5].Value);
+                    cmditens.Parameters.AddWithValue("@data_locacao", SqlDbType.NChar).Value = DateTime.Now;
+                    cmditens.ExecuteNonQuery();
+                }
             }
 
             cbxCliente.Enabled = false;
@@ -238,9 +247,12 @@ namespace TrabalhoTopGames
             txtDuracao.Enabled = false;
             btnAbrirLocacao.Enabled = true;
 
+            dgvLocacao.Refresh();
+
             lblIdProd.Text = "";
             lblValorProd.Text = "";
             lblValorTotal.Text = "";
+            txtDuracao.Text = "";
             cbxCliente.Text = "";
             cbxProduto.Text = "";
 
