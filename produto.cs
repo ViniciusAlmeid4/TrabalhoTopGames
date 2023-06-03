@@ -143,6 +143,5 @@ namespace TrabalhoTopGames
             con.Close();
         }
 
-
     }
 }
