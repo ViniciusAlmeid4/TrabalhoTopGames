@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLocacao));
             this.label1 = new System.Windows.Forms.Label();
             this.btnExcluirItem = new System.Windows.Forms.Button();
             this.btnEditarItem = new System.Windows.Forms.Button();
@@ -47,13 +48,16 @@
             this.cbxProduto = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblIdProd = new System.Windows.Forms.Label();
+            this.btnDevolucao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocacao)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(20, 191);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 13);
@@ -63,6 +67,7 @@
             // btnExcluirItem
             // 
             this.btnExcluirItem.BackColor = System.Drawing.Color.Red;
+            this.btnExcluirItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluirItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirItem.Location = new System.Drawing.Point(19, 348);
             this.btnExcluirItem.Name = "btnExcluirItem";
@@ -75,6 +80,7 @@
             // btnEditarItem
             // 
             this.btnEditarItem.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnEditarItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarItem.Location = new System.Drawing.Point(19, 286);
             this.btnEditarItem.Name = "btnEditarItem";
@@ -87,6 +93,7 @@
             // btnSair
             // 
             this.btnSair.BackColor = System.Drawing.Color.Red;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Location = new System.Drawing.Point(833, 325);
             this.btnSair.Name = "btnSair";
@@ -99,6 +106,7 @@
             // btnFinalizarLocacao
             // 
             this.btnFinalizarLocacao.BackColor = System.Drawing.Color.Firebrick;
+            this.btnFinalizarLocacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalizarLocacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinalizarLocacao.Location = new System.Drawing.Point(617, 325);
             this.btnFinalizarLocacao.Name = "btnFinalizarLocacao";
@@ -111,6 +119,7 @@
             // btnAbrirLocacao
             // 
             this.btnAbrirLocacao.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAbrirLocacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAbrirLocacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbrirLocacao.Location = new System.Drawing.Point(390, 325);
             this.btnAbrirLocacao.Name = "btnAbrirLocacao";
@@ -123,6 +132,7 @@
             // btnInserirItem
             // 
             this.btnInserirItem.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnInserirItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInserirItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInserirItem.Location = new System.Drawing.Point(19, 226);
             this.btnInserirItem.Name = "btnInserirItem";
@@ -153,7 +163,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(17, 123);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 13);
@@ -163,7 +175,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(17, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 13);
@@ -173,7 +187,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(17, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
@@ -183,6 +199,8 @@
             // lblValorTotal
             // 
             this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblValorTotal.ForeColor = System.Drawing.Color.White;
             this.lblValorTotal.Location = new System.Drawing.Point(122, 191);
             this.lblValorTotal.Name = "lblValorTotal";
             this.lblValorTotal.Size = new System.Drawing.Size(35, 13);
@@ -191,8 +209,10 @@
             // 
             // label5
             // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(260, 62);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(278, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 29);
             this.label5.TabIndex = 103;
@@ -202,7 +222,9 @@
             // lblValorProd
             // 
             this.lblValorProd.AutoSize = true;
-            this.lblValorProd.Location = new System.Drawing.Point(290, 95);
+            this.lblValorProd.BackColor = System.Drawing.Color.Transparent;
+            this.lblValorProd.ForeColor = System.Drawing.Color.White;
+            this.lblValorProd.Location = new System.Drawing.Point(304, 95);
             this.lblValorProd.Name = "lblValorProd";
             this.lblValorProd.Size = new System.Drawing.Size(35, 13);
             this.lblValorProd.TabIndex = 104;
@@ -228,7 +250,9 @@
             // 
             // label6
             // 
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(177, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 38);
@@ -239,17 +263,35 @@
             // lblIdProd
             // 
             this.lblIdProd.AutoSize = true;
+            this.lblIdProd.BackColor = System.Drawing.Color.Transparent;
+            this.lblIdProd.ForeColor = System.Drawing.Color.White;
             this.lblIdProd.Location = new System.Drawing.Point(196, 95);
             this.lblIdProd.Name = "lblIdProd";
             this.lblIdProd.Size = new System.Drawing.Size(35, 13);
             this.lblIdProd.TabIndex = 108;
             this.lblIdProd.Text = "label5";
             // 
+            // btnDevolucao
+            // 
+            this.btnDevolucao.BackColor = System.Drawing.Color.Gold;
+            this.btnDevolucao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDevolucao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDevolucao.Location = new System.Drawing.Point(192, 288);
+            this.btnDevolucao.Name = "btnDevolucao";
+            this.btnDevolucao.Size = new System.Drawing.Size(182, 105);
+            this.btnDevolucao.TabIndex = 109;
+            this.btnDevolucao.Text = "Devolução";
+            this.btnDevolucao.UseVisualStyleBackColor = false;
+            this.btnDevolucao.Click += new System.EventHandler(this.btnDevolucao_Click);
+            // 
             // FormLocacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::TrabalhoTopGames.Properties.Resources.Fundo_Forms;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(991, 411);
+            this.Controls.Add(this.btnDevolucao);
             this.Controls.Add(this.lblIdProd);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbxProduto);
@@ -269,6 +311,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FormLocacao";
             this.Text = "FormLocacao";
             this.Load += new System.EventHandler(this.FormLocacao_Load);
@@ -299,5 +344,6 @@
         private System.Windows.Forms.ComboBox cbxProduto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblIdProd;
+        private System.Windows.Forms.Button btnDevolucao;
     }
 }

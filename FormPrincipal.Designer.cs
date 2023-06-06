@@ -58,7 +58,7 @@
             // dgvPagIni
             // 
             this.dgvPagIni.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPagIni.BackgroundColor = System.Drawing.Color.Navy;
+            this.dgvPagIni.BackgroundColor = System.Drawing.Color.LightSlateGray;
             this.dgvPagIni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPagIni.Location = new System.Drawing.Point(12, 257);
             this.dgvPagIni.Name = "dgvPagIni";
@@ -88,7 +88,7 @@
             // vendaToolStripMenuItem
             // 
             this.vendaToolStripMenuItem.Name = "vendaToolStripMenuItem";
-            this.vendaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vendaToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.vendaToolStripMenuItem.Text = "Venda";
             this.vendaToolStripMenuItem.Click += new System.EventHandler(this.vendaToolStripMenuItem_Click);
             // 
@@ -98,7 +98,7 @@
             this.novaLocaçãoToolStripMenuItem,
             this.devoluçãoToolStripMenuItem});
             this.locaçãoToolStripMenuItem.Name = "locaçãoToolStripMenuItem";
-            this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.locaçãoToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.locaçãoToolStripMenuItem.Text = "Locação";
             this.locaçãoToolStripMenuItem.Click += new System.EventHandler(this.locaçãoToolStripMenuItem_Click);
             // 
@@ -167,7 +167,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.DarkRed;
+            this.btnClose.BackColor = System.Drawing.Color.Red;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(620, 194);

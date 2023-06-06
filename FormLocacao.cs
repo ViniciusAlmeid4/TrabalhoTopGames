@@ -116,15 +116,23 @@ namespace TrabalhoTopGames
         private void btnInserirItem_Click(object sender, EventArgs e)
         {
             var repetido = false;
+            var duracao = true;
+            if(txtDuracao.Text == "")
+            {
+                duracao = false;
+            }
+
             foreach (DataGridViewRow dr in dgvLocacao.Rows)
             {
-                if (cbxProduto.Text == Convert.ToString(dr.Cells[1].Value))
+                if (cbxProduto.Text == Convert.ToString(dr.Cells[3].Value))
                 {
                     repetido = true;
                 }
             }
-            if (repetido == false)
+
+            if (repetido == false && duracao == true)
             {
+
                 DataGridViewRow item = new DataGridViewRow();
                 item.CreateCells(dgvLocacao);
                 item.Cells[0].Value = cbxCliente.SelectedValue.ToString();
@@ -143,12 +151,21 @@ namespace TrabalhoTopGames
                 foreach (DataGridViewRow dr in dgvLocacao.Rows)
                 {
                     soma += Convert.ToDecimal(dr.Cells[5].Value);
-                    lblValorTotal.Text = Convert.ToString(soma);
                 }
+
+                lblValorTotal.Text = Convert.ToString(soma);
+
             }
             else
             {
-                MessageBox.Show("Produto já está inserido na Locacao!!");
+                if (duracao == false)
+                {
+                    MessageBox.Show("Preencha a duração");
+                }
+                else
+                {
+                    MessageBox.Show("Produto já está inserido na Locacao!!");
+                }
             }
         }
 
@@ -182,6 +199,14 @@ namespace TrabalhoTopGames
             dgvLocacao.Rows[linha].Cells[3].Value = cbxProduto.Text;
             dgvLocacao.Rows[linha].Cells[4].Value = txtDuracao.Text;
             dgvLocacao.Rows[linha].Cells[5].Value = lblValorProd.Text;
+
+            decimal soma = 0;
+            foreach (DataGridViewRow dr in dgvLocacao.Rows)
+            {
+                soma += Convert.ToDecimal(dr.Cells[5].Value);
+            }
+
+            lblValorTotal.Text = Convert.ToString(soma);
         }
 
         private void btnExcluirItem_Click(object sender, EventArgs e)
@@ -232,7 +257,7 @@ namespace TrabalhoTopGames
                     cmditens.Parameters.AddWithValue("@Idproduto", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[2].Value);
                     cmditens.Parameters.AddWithValue("@Idcliente", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[0].Value);
                     cmditens.Parameters.AddWithValue("@duracao", SqlDbType.Int).Value = Convert.ToInt32(dr.Cells[4].Value);
-                    cmditens.Parameters.AddWithValue("@valor", SqlDbType.Int).Value = Convert.ToDecimal(dr.Cells[5].Value);
+                    cmditens.Parameters.AddWithValue("@valor", SqlDbType.Decimal).Value = Convert.ToDecimal(dr.Cells[5].Value);
                     cmditens.Parameters.AddWithValue("@data_locacao", SqlDbType.NChar).Value = DateTime.Now;
                     cmditens.ExecuteNonQuery();
                 }
@@ -257,6 +282,12 @@ namespace TrabalhoTopGames
             cbxProduto.Text = "";
 
             con.Close();
+        }
+
+        private void btnDevolucao_Click(object sender, EventArgs e)
+        {
+            FormDevolucao frm = new FormDevolucao();
+            frm.Show();
         }
     }
 }

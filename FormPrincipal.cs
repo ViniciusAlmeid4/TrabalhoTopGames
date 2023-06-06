@@ -120,5 +120,6 @@ namespace TrabalhoTopGames
             FormVendas frm = new FormVendas();
             frm.Show();
         }
+
     }
 }
