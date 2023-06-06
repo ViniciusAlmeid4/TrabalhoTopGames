@@ -134,6 +134,7 @@
             // 
             // dgvLocacao
             // 
+            this.dgvLocacao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLocacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLocacao.Location = new System.Drawing.Point(390, 18);
             this.dgvLocacao.Name = "dgvLocacao";

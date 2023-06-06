@@ -48,7 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -128,6 +130,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -162,6 +165,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DataCasa.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\fundo_inicial3.jpg" />
+    <None Include="Resources\IMAGEM SAIR 1.png" />
+    <None Include="Resources\IMAGEM VENDAS 2.png" />
+    <None Include="Resources\IMAGEM_PRODUTOS-removebg-preview.png" />
+    <None Include="Resources\IMAGEM_CLIENTE-removebg-preview.png" />
+    <None Include="Resources\Fundo_Forms.jpg" />
+    <None Include="Resources\fundo_inicial21.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

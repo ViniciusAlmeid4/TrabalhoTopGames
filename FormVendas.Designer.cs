@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExcluirItem = new System.Windows.Forms.Button();
             this.btnEditarItem = new System.Windows.Forms.Button();
@@ -36,22 +35,16 @@
             this.btnFinalizarVenda = new System.Windows.Forms.Button();
             this.btnAbrirVenda = new System.Windows.Forms.Button();
             this.btnInserirItem = new System.Windows.Forms.Button();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.dgvVenda = new System.Windows.Forms.DataGridView();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtProduto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            this.cbxCliente = new System.Windows.Forms.ComboBox();
+            this.cbxProduto = new System.Windows.Forms.ComboBox();
+            this.lblValor = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVenda)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtValorTotal
-            // 
-            this.txtValorTotal.Location = new System.Drawing.Point(16, 190);
-            this.txtValorTotal.Name = "txtValorTotal";
-            this.txtValorTotal.Size = new System.Drawing.Size(234, 20);
-            this.txtValorTotal.TabIndex = 87;
             // 
             // label1
             // 
@@ -95,6 +88,7 @@
             this.btnSair.TabIndex = 83;
             this.btnSair.Text = "SAIR";
             this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnFinalizarVenda
             // 
@@ -117,6 +111,7 @@
             this.btnAbrirVenda.TabIndex = 81;
             this.btnAbrirVenda.Text = "ABRIR VENDA";
             this.btnAbrirVenda.UseVisualStyleBackColor = false;
+            this.btnAbrirVenda.Click += new System.EventHandler(this.btnAbrirVenda_Click);
             // 
             // btnInserirItem
             // 
@@ -129,13 +124,14 @@
             this.btnInserirItem.Text = "INSERIR ITEM";
             this.btnInserirItem.UseVisualStyleBackColor = false;
             // 
-            // dgvClientes
+            // dgvVenda
             // 
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(390, 18);
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(585, 279);
-            this.dgvClientes.TabIndex = 79;
+            this.dgvVenda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVenda.Location = new System.Drawing.Point(289, 18);
+            this.dgvVenda.Name = "dgvVenda";
+            this.dgvVenda.Size = new System.Drawing.Size(686, 279);
+            this.dgvVenda.TabIndex = 79;
             // 
             // txtQuantidade
             // 
@@ -154,13 +150,6 @@
             this.label4.TabIndex = 77;
             this.label4.Text = "QUANTIDADE";
             // 
-            // txtProduto
-            // 
-            this.txtProduto.Location = new System.Drawing.Point(16, 82);
-            this.txtProduto.Name = "txtProduto";
-            this.txtProduto.Size = new System.Drawing.Size(234, 20);
-            this.txtProduto.TabIndex = 76;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -170,13 +159,6 @@
             this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 75;
             this.label3.Text = "NOME DO PRODUTO";
-            // 
-            // txtNome
-            // 
-            this.txtNome.Location = new System.Drawing.Point(16, 34);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(368, 20);
-            this.txtNome.TabIndex = 74;
             // 
             // label2
             // 
@@ -188,12 +170,40 @@
             this.label2.TabIndex = 73;
             this.label2.Text = "NOME CLIENTE";
             // 
+            // cbxCliente
+            // 
+            this.cbxCliente.FormattingEnabled = true;
+            this.cbxCliente.Location = new System.Drawing.Point(16, 34);
+            this.cbxCliente.Name = "cbxCliente";
+            this.cbxCliente.Size = new System.Drawing.Size(234, 21);
+            this.cbxCliente.TabIndex = 88;
+            // 
+            // cbxProduto
+            // 
+            this.cbxProduto.FormattingEnabled = true;
+            this.cbxProduto.Location = new System.Drawing.Point(16, 82);
+            this.cbxProduto.Name = "cbxProduto";
+            this.cbxProduto.Size = new System.Drawing.Size(234, 21);
+            this.cbxProduto.TabIndex = 89;
+            // 
+            // lblValor
+            // 
+            this.lblValor.AutoSize = true;
+            this.lblValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValor.Location = new System.Drawing.Point(16, 197);
+            this.lblValor.Name = "lblValor";
+            this.lblValor.Size = new System.Drawing.Size(50, 16);
+            this.lblValor.TabIndex = 90;
+            this.lblValor.Text = "label5";
+            // 
             // FormVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 411);
-            this.Controls.Add(this.txtValorTotal);
+            this.Controls.Add(this.lblValor);
+            this.Controls.Add(this.cbxProduto);
+            this.Controls.Add(this.cbxCliente);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExcluirItem);
             this.Controls.Add(this.btnEditarItem);
@@ -201,24 +211,21 @@
             this.Controls.Add(this.btnFinalizarVenda);
             this.Controls.Add(this.btnAbrirVenda);
             this.Controls.Add(this.btnInserirItem);
-            this.Controls.Add(this.dgvClientes);
+            this.Controls.Add(this.dgvVenda);
             this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtProduto);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.Name = "FormVendas";
             this.Text = "FormVendas";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            this.Load += new System.EventHandler(this.FormVendas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVenda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtValorTotal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExcluirItem;
         private System.Windows.Forms.Button btnEditarItem;
@@ -226,12 +233,13 @@
         private System.Windows.Forms.Button btnFinalizarVenda;
         private System.Windows.Forms.Button btnAbrirVenda;
         private System.Windows.Forms.Button btnInserirItem;
-        private System.Windows.Forms.DataGridView dgvClientes;
+        private System.Windows.Forms.DataGridView dgvVenda;
         private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtProduto;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbxCliente;
+        private System.Windows.Forms.ComboBox cbxProduto;
+        private System.Windows.Forms.Label lblValor;
     }
 }

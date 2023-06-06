@@ -79,6 +79,25 @@ namespace TrabalhoTopGames
             con.Close();
         }
 
+        private void carrega_pedidos()
+        {
+            string sql = "Select v.Idvenda, nome_cliente, nome_produto, data_venda, total_venda from pedido p join venda v on p.Idvenda = v.Idvenda join cliente c on p.Idcliente = c.Idcliente join produtos pr on pr.Idproduto = p.Idproduto";
+
+            con.Open();
+            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            DataSet ds = new DataSet();
+
+            da.Fill(ds, "venda");
+
+            dgvPagIni.DataSource = ds.Tables["venda"];
+
+            dgvPagIni.Columns[0].HeaderText = "Idvenda";
+            dgvPagIni.Columns[1].HeaderText = "Nome Cliente";
+            dgvPagIni.Columns[2].HeaderText = "Nome Produto";
+            dgvPagIni.Columns[3].HeaderText = "Data Venda";
+            dgvPagIni.Columns[4].HeaderText = "Total Venda";
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -87,6 +106,18 @@ namespace TrabalhoTopGames
         private void novaLocaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLocacao frm = new FormLocacao();
+            frm.Show();
+        }
+
+        private void devoluçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDevolucao frm = new FormDevolucao();
+            frm.Show();
+        }
+
+        private void vendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormVendas frm = new FormVendas();
             frm.Show();
         }
     }
