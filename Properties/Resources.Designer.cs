@@ -129,5 +129,27 @@ namespace TrabalhoTopGames.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nintendo_switch_pokemon_red_and_blue_super_mario_odyssey_video_game_consoles_nintendo_blue_PhotoRoom_png_PhotoRoom {
+            get {
+                object obj = ResourceManager.GetObject("nintendo-switch-pokemon-red-and-blue-super-mario-odyssey-video-game-consoles-nint" +
+                        "endo-blue-PhotoRoom.png-PhotoRoom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_nintendo_switch_pokemon_red_and_blue_super_mario_odyssey_video_game_consoles_nintendo_blue_electronics {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-nintendo-switch-pokemon-red-and-blue-super-mario-odyssey-video-game-c" +
+                        "onsoles-nintendo-blue-electronics", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

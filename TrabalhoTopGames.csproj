@@ -165,6 +165,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DataCasa.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\nintendo-switch-pokemon-red-and-blue-super-mario-odyssey-video-game-consoles-nintendo-blue-PhotoRoom.png-PhotoRoom.png" />
+    <None Include="Resources\png-clipart-nintendo-switch-pokemon-red-and-blue-super-mario-odyssey-video-game-consoles-nintendo-blue-electronics.png" />
     <None Include="Resources\fundo_inicial3.jpg" />
     <None Include="Resources\IMAGEM SAIR 1.png" />
     <None Include="Resources\IMAGEM VENDAS 2.png" />

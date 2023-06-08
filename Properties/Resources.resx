@@ -121,8 +121,11 @@
   <data name="IMAGEM_PRODUTOS-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMAGEM_PRODUTOS-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IMAGEM SAIR 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IMAGEM SAIR 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="png-clipart-nintendo-switch-pokemon-red-and-blue-super-mario-odyssey-video-game-consoles-nintendo-blue-electronics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\png-clipart-nintendo-switch-pokemon-red-and-blue-super-mario-odyssey-video-game-consoles-nintendo-blue-electronics.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fundo_inicial3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fundo_inicial3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IMAGEM VENDAS 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMAGEM VENDAS 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,10 +136,13 @@
   <data name="fundo_inicial2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fundo_inicial21.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IMAGEM SAIR 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IMAGEM SAIR 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IMAGEM_CLIENTE-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMAGEM_CLIENTE-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fundo_inicial3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fundo_inicial3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="nintendo-switch-pokemon-red-and-blue-super-mario-odyssey-video-game-consoles-nintendo-blue-PhotoRoom.png-PhotoRoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nintendo-switch-pokemon-red-and-blue-super-mario-odyssey-video-game-consoles-nintendo-blue-PhotoRoom.png-PhotoRoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

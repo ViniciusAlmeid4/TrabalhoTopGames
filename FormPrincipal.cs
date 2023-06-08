@@ -96,11 +96,28 @@ namespace TrabalhoTopGames
             dgvPagIni.Columns[2].HeaderText = "Nome Produto";
             dgvPagIni.Columns[3].HeaderText = "Data Venda";
             dgvPagIni.Columns[4].HeaderText = "Total Venda";
+
+            con.Close();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void carrega_locacao()
         {
-            this.Close();
+            string sql = "Select nome_cliente, nome_produto, data_locacao, duracao from locacao l join cliente c on l.Idcliente = c.Idcliente join produtos pr on pr.Idproduto = l.Idproduto where pago = 0";
+
+            con.Open();
+            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            DataSet ds = new DataSet();
+
+            da.Fill(ds, "locacao");
+
+            dgvPagIni.DataSource = ds.Tables["locacao"];
+
+            dgvPagIni.Columns[0].HeaderText = "Nome Cliente";
+            dgvPagIni.Columns[1].HeaderText = "Nome Produto";
+            dgvPagIni.Columns[2].HeaderText = "Data Locação";
+            dgvPagIni.Columns[3].HeaderText = "Duração";
+
+            con.Close();
         }
 
         private void novaLocaçãoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,5 +138,38 @@ namespace TrabalhoTopGames
             frm.Show();
         }
 
+        private void btnVenda_Click(object sender, EventArgs e)
+        {
+            carrega_pedidos();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            FormCliente frm = new FormCliente();
+            frm.Show();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            FormProdutos frm = new FormProdutos();
+            frm.Show();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            FormLocacao frm = new FormLocacao();
+            frm.Show();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            FormVendas frm = new FormVendas();
+            frm.Show();
+        }
+
+        private void btnLocacao_Click(object sender, EventArgs e)
+        {
+            carrega_locacao();
+        }
     }
 }

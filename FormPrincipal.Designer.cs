@@ -41,12 +41,12 @@
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCarregaProduto = new System.Windows.Forms.Button();
             this.btnCarregaCliente = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnVenda = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnLocacao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagIni)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -165,19 +165,6 @@
             this.btnCarregaCliente.UseVisualStyleBackColor = false;
             this.btnCarregaCliente.Click += new System.EventHandler(this.btnCarregaCliente_Click);
             // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Red;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(620, 194);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(150, 55);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Sair";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // btnVenda
             // 
             this.btnVenda.BackColor = System.Drawing.Color.MediumPurple;
@@ -189,6 +176,7 @@
             this.btnVenda.TabIndex = 5;
             this.btnVenda.Text = "Venda";
             this.btnVenda.UseVisualStyleBackColor = false;
+            this.btnVenda.Click += new System.EventHandler(this.btnVenda_Click);
             // 
             // pictureBox1
             // 
@@ -200,6 +188,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(169, 122);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
             // 
@@ -211,6 +200,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(169, 122);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
             // 
@@ -219,20 +209,35 @@
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Location = new System.Drawing.Point(420, 55);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(169, 122);
+            this.pictureBox3.Size = new System.Drawing.Size(160, 122);
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.pictureBox4.BackgroundImage = global::TrabalhoTopGames.Properties.Resources.IMAGEM_SAIR_1;
+            this.pictureBox4.BackgroundImage = global::TrabalhoTopGames.Properties.Resources.nintendo_switch_pokemon_red_and_blue_super_mario_odyssey_video_game_consoles_nintendo_blue_PhotoRoom_png_PhotoRoom;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.Location = new System.Drawing.Point(610, 55);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(169, 122);
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // btnLocacao
+            // 
+            this.btnLocacao.BackColor = System.Drawing.Color.MediumOrchid;
+            this.btnLocacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLocacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLocacao.Location = new System.Drawing.Point(619, 194);
+            this.btnLocacao.Name = "btnLocacao";
+            this.btnLocacao.Size = new System.Drawing.Size(150, 55);
+            this.btnLocacao.TabIndex = 11;
+            this.btnLocacao.Text = "Locação";
+            this.btnLocacao.UseVisualStyleBackColor = false;
+            this.btnLocacao.Click += new System.EventHandler(this.btnLocacao_Click);
             // 
             // FormPrincipal
             // 
@@ -241,12 +246,12 @@
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.BackgroundImage = global::TrabalhoTopGames.Properties.Resources.fundo_inicial2;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnLocacao);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnVenda);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCarregaCliente);
             this.Controls.Add(this.btnCarregaProduto);
             this.Controls.Add(this.dgvPagIni);
@@ -282,7 +287,6 @@
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
         private System.Windows.Forms.Button btnCarregaProduto;
         private System.Windows.Forms.Button btnCarregaCliente;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ToolStripMenuItem novaLocaçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem devoluçãoToolStripMenuItem;
         private System.Windows.Forms.Button btnVenda;
@@ -290,5 +294,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Button btnLocacao;
     }
 }
