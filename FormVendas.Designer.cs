@@ -46,6 +46,8 @@
             this.lblValor = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblValorUnit = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblPlat = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVenda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(171, 174);
+            this.label1.Location = new System.Drawing.Point(228, 334);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 86;
@@ -217,7 +219,7 @@
             this.lblValor.BackColor = System.Drawing.Color.Transparent;
             this.lblValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValor.ForeColor = System.Drawing.Color.White;
-            this.lblValor.Location = new System.Drawing.Point(191, 196);
+            this.lblValor.Location = new System.Drawing.Point(246, 362);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(50, 16);
             this.lblValor.TabIndex = 90;
@@ -247,6 +249,29 @@
             this.lblValorUnit.TabIndex = 92;
             this.lblValorUnit.Text = "VLR";
             // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(185, 174);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 35);
+            this.label6.TabIndex = 93;
+            this.label6.Text = "PLATAFORMA / MARCA";
+            // 
+            // lblPlat
+            // 
+            this.lblPlat.BackColor = System.Drawing.Color.Transparent;
+            this.lblPlat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlat.ForeColor = System.Drawing.Color.White;
+            this.lblPlat.Location = new System.Drawing.Point(185, 209);
+            this.lblPlat.Name = "lblPlat";
+            this.lblPlat.Size = new System.Drawing.Size(86, 27);
+            this.lblPlat.TabIndex = 94;
+            this.lblPlat.Text = "label5";
+            this.lblPlat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,6 +280,8 @@
             this.BackgroundImage = global::TrabalhoTopGames.Properties.Resources.Fundo_Forms;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(991, 411);
+            this.Controls.Add(this.lblPlat);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblValorUnit);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblValor);
@@ -302,5 +329,7 @@
         private System.Windows.Forms.Label lblValor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblValorUnit;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblPlat;
     }
 }

@@ -38,7 +38,7 @@ namespace TrabalhoTopGames
 
         private void Carrega_produto()
         {
-            string prod = "SELECT Idproduto,nome_produto FROM produtos";
+            string prod = "SELECT Idproduto,nome_produto FROM produtos where status = 'Disp'";
             // SqlCommand cmd = new SqlCommand(cli, con);
             // cmd.CommandType = CommandType.Text;
             con.Open();
@@ -64,6 +64,7 @@ namespace TrabalhoTopGames
 
             lblValor.Text = "";
             lblValorUnit.Text = "";
+            lblPlat.Text = "";
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -105,9 +106,15 @@ namespace TrabalhoTopGames
                 con.Close();
             }
             con.Open();
-            string sql = "SELECT preco_venda FROM produtos WHERE Idproduto = " + cbxProduto.SelectedValue.ToString() + "";
+            string sql = "SELECT preco_venda, plataforma FROM produtos WHERE Idproduto = " + cbxProduto.SelectedValue.ToString() + "";
             SqlCommand cmd = new SqlCommand(sql, con);
-            lblValorUnit.Text = (cmd.ExecuteScalar()).ToString();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                lblValorUnit.Text = dr["preco_venda"].ToString();
+                lblPlat.Text = dr["plataforma"].ToString();
+            }
+
             txtQuantidade.Focus();
             con.Close();
         }
@@ -131,28 +138,50 @@ namespace TrabalhoTopGames
 
             if (repetido == false && quant == true)
             {
-                DataGridViewRow item = new DataGridViewRow();
-                item.CreateCells(dgvVenda);
-                item.Cells[0].Value = cbxCliente.SelectedValue.ToString();
-                item.Cells[1].Value = cbxCliente.Text;
-                item.Cells[2].Value = cbxProduto.SelectedValue.ToString();
-                item.Cells[3].Value = cbxProduto.Text;
-                item.Cells[4].Value = txtQuantidade.Text;
-                item.Cells[5].Value = lblValorUnit.Text;
-                dgvVenda.Rows.Add(item);
-                lblValorUnit.Text = "";
-                cbxProduto.Text = "";
-                cbxCliente.Text = "";
-                txtQuantidade.Text = "";
-                decimal soma = 0, valor;
-                int quantidade;
-                foreach (DataGridViewRow dr in dgvVenda.Rows)
+                string sql = "select estoque_produto from produtos where Idproduto = " + cbxProduto.SelectedValue.ToString();
+
+                if (con.State == ConnectionState.Open)
                 {
-                    quantidade = Convert.ToInt32(dr.Cells[4].Value);
-                    valor = Convert.ToDecimal(dr.Cells[5].Value);
-                    soma += quantidade*valor;
+                    con.Close();
                 }
-                lblValor.Text = Convert.ToString(soma);
+
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand(sql,con);
+                cmd.ExecuteNonQuery();
+                int estoque = Convert.ToInt32(cmd.ExecuteScalar());
+
+                con.Close();
+
+                if (Convert.ToInt32(txtQuantidade.Text)>estoque)
+                {
+                    MessageBox.Show("Quantidade indisponível de produto!!");
+                }
+                else
+                {
+                    DataGridViewRow item = new DataGridViewRow();
+                    item.CreateCells(dgvVenda);
+                    item.Cells[0].Value = cbxCliente.SelectedValue.ToString();
+                    item.Cells[1].Value = cbxCliente.Text;
+                    item.Cells[2].Value = cbxProduto.SelectedValue.ToString();
+                    item.Cells[3].Value = cbxProduto.Text;
+                    item.Cells[4].Value = txtQuantidade.Text;
+                    item.Cells[5].Value = lblValorUnit.Text;
+                    dgvVenda.Rows.Add(item);
+                    lblValorUnit.Text = "";
+                    cbxProduto.Text = "";
+                    cbxCliente.Text = "";
+                    txtQuantidade.Text = "";
+                    decimal soma = 0, valor;
+                    int quantidade;
+                    foreach (DataGridViewRow dr in dgvVenda.Rows)
+                    {
+                        quantidade = Convert.ToInt32(dr.Cells[4].Value);
+                        valor = Convert.ToDecimal(dr.Cells[5].Value);
+                        soma += quantidade*valor;
+                    }
+                    lblValor.Text = Convert.ToString(soma);
+                }
             }
             else
             {
@@ -183,6 +212,7 @@ namespace TrabalhoTopGames
                 cbxProduto.Text = row.Cells[3].Value.ToString();
                 txtQuantidade.Text = row.Cells[4].Value.ToString();
                 lblValorUnit.Text = row.Cells[5].Value.ToString();
+                lblPlat.Text = "";
             }
         }
 
@@ -216,6 +246,7 @@ namespace TrabalhoTopGames
             cbxProduto.Text = "";
             cbxCliente.Text = "";
             txtQuantidade.Text = "";
+            lblPlat.Text = "";
 
             decimal soma = 0, valor;
             int quantidade;
@@ -277,6 +308,28 @@ namespace TrabalhoTopGames
 
                     cmditens.Parameters.AddWithValue("@total", SqlDbType.Decimal).Value = soma;
                     cmditens.ExecuteNonQuery();
+
+                    string estoque_banco = "Select estoque_produto from produtos where Idproduto = " + dr.Cells[2].Value + "";
+
+                    SqlCommand estoq = new SqlCommand(estoque_banco, con);
+
+                    int estoque = Convert.ToInt32(estoq.ExecuteScalar()), novo_estoque = estoque - Convert.ToInt32(dr.Cells[4].Value);
+                    if (novo_estoque == 0)
+                    {
+                        string up_estoque = "Update produtos set estoque_produto = " + novo_estoque + ", status = 'Vend' where Idproduto = " + dr.Cells[2].Value + "";
+
+                        SqlCommand cmd_estoque = new SqlCommand(up_estoque, con);
+
+                        cmd_estoque.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        string up_estoque = "Update produtos set estoque_produto = "+novo_estoque+" where Idproduto = " + dr.Cells[2].Value +"";
+
+                        SqlCommand cmd_estoque = new SqlCommand(up_estoque, con);
+
+                        cmd_estoque.ExecuteNonQuery();
+                    }
                 }
             }
             con.Close();
@@ -300,8 +353,10 @@ namespace TrabalhoTopGames
             txtQuantidade.Text = "";
             cbxCliente.Text = "";
             cbxProduto.Text = "";
+            lblPlat.Text = "";
 
             con.Close();
         }
+
     }
 }
